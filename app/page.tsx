@@ -358,11 +358,10 @@ import Image from "next/image";
 export default function Home() {
   // --- LOGIKA COUNTDOWN TIMER ---
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [mounted, setMounted] = useState(false); // Mencegah error hydration dari Next.js
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    // Atur tanggal target acara (27 Nov 2026, 08:00 AM)
     const targetDate = new Date("2026-11-27T08:00:00").getTime();
 
     const interval = setInterval(() => {
@@ -401,8 +400,8 @@ export default function Home() {
         }
       `}} />
 
-      {/* 1. TOP BANNER */}
-      <section className="relative w-full h-[40vh] md:h-[60vh] lg:h-[125vh] border-b-4 border-[#13bbad]">
+      {/* 1. TOP BANNER - Disesuaikan tingginya agar proporsional di HP & Desktop */}
+      <section className="relative w-full h-[50vh] md:h-[70vh] lg:h-[90vh] border-b-4 border-[#13bbad]">
         <Image 
           src="/assets/images/home-banner.jpg" 
           alt="Home Banner 80s Thrift Fest"
@@ -415,36 +414,36 @@ export default function Home() {
 
       {/* 2. BAR HITAM TEKS BERJALAN (MARQUEE) */}
       <section className="bg-[#000000] py-3 border-b-4 border-[#ff1493] overflow-hidden flex whitespace-nowrap">
-        <div className="animate-marquee font-anton text-[#fadf29] text-xl md:text-2xl tracking-widest uppercase">
+        <div className="animate-marquee font-anton text-[#fadf29] text-lg md:text-2xl tracking-widest uppercase">
           <span className="mx-4">⚡ WELCOME TO THE 80'S THRIFT FEST ⚡ NEON VIBES ⚡ SUSTAINABLE FASHION ⚡ VINTAGE VAULT ⚡ LIVE SYNTHWAVE ⚡ RETRO ARCADE ⚡</span>
           <span className="mx-4">⚡ WELCOME TO THE 80'S THRIFT FEST ⚡ NEON VIBES ⚡ SUSTAINABLE FASHION ⚡ VINTAGE VAULT ⚡ LIVE SYNTHWAVE ⚡ RETRO ARCADE ⚡</span>
         </div>
       </section>
 
-      {/* 3. NEW SECTION: COUNTDOWN TIMER */}
-      <section className="py-12 bg-[#000000] border-b-4 border-[#0fdff8] flex flex-col items-center justify-center relative overflow-hidden">
-        {/* Efek grid retro di latar belakang */}
+      {/* 3. COUNTDOWN TIMER - Diubah menjadi Grid agar aman di layar HP sempit */}
+      <section className="py-12 px-4 bg-[#000000] border-b-4 border-[#0fdff8] flex flex-col items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(19,187,173,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(19,187,173,0.1)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30 pointer-events-none"></div>
 
-        <h2 className="font-pacifico text-2xl md:text-4xl text-[#ff1493] mb-8 z-10 drop-shadow-[2px_2px_0px_#144333]">
+        <h2 className="font-pacifico text-2xl md:text-4xl text-[#ff1493] mb-8 z-10 drop-shadow-[2px_2px_0px_#144333] text-center">
           The Neon Gates Open In...
         </h2>
 
         {mounted ? (
-          <div className="flex gap-4 md:gap-8 z-10">
+          <div className="grid grid-cols-4 gap-2 sm:gap-4 md:gap-8 z-10 max-w-3xl w-full justify-items-center">
             {[
               { label: 'DAYS', value: timeLeft.days },
               { label: 'HOURS', value: timeLeft.hours },
               { label: 'MINUTES', value: timeLeft.minutes },
               { label: 'SECONDS', value: timeLeft.seconds },
             ].map((item, idx) => (
-              <div key={idx} className="flex flex-col items-center group">
-                <div className="w-16 h-16 md:w-28 md:h-28 bg-[#144333] border-2 border-[#0fdff8] rounded shadow-[4px_4px_0px_#fadf29] flex items-center justify-center mb-3 group-hover:-translate-y-1 transition-transform">
-                  <span className="font-anton text-3xl md:text-6xl text-white drop-shadow-[0_0_10px_rgba(15,223,248,0.8)]">
+              <div key={idx} className="flex flex-col items-center group w-full">
+                {/* Ukuran kotak responsif: HP (w-14), Tablet (w-20), Desktop (w-28) */}
+                <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 bg-[#144333] border-2 border-[#0fdff8] rounded shadow-[3px_3px_0px_#fadf29] md:shadow-[4px_4px_0px_#fadf29] flex items-center justify-center mb-2 md:mb-3 group-hover:-translate-y-1 transition-transform">
+                  <span className="font-anton text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white drop-shadow-[0_0_10px_rgba(15,223,248,0.8)]">
                     {item.value.toString().padStart(2, '0')}
                   </span>
                 </div>
-                <span className="font-roboto font-bold text-[#0fdff8] tracking-widest text-xs md:text-sm uppercase drop-shadow-md">
+                <span className="font-roboto font-bold text-[#0fdff8] tracking-widest text-[10px] sm:text-xs md:text-sm uppercase drop-shadow-md text-center">
                   {item.label}
                 </span>
               </div>
@@ -452,24 +451,24 @@ export default function Home() {
           </div>
         ) : (
           <div className="h-24 md:h-32 flex items-center justify-center z-10">
-            <span className="font-anton text-2xl md:text-3xl text-[#fadf29] animate-pulse tracking-widest uppercase">
+            <span className="font-anton text-xl md:text-3xl text-[#fadf29] animate-pulse tracking-widest uppercase text-center">
               Calculating Time Jump...
             </span>
           </div>
         )}
       </section>
 
-      {/* 4. SHORT COPY (10 WORDS) & BUTTON */}
+      {/* 4. SHORT COPY & BUTTON */}
       <section className="py-16 md:py-24 px-6 flex flex-col items-center justify-center text-center relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#0fdff8] rounded-full mix-blend-screen filter blur-[100px] opacity-30 pointer-events-none"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 bg-[#0fdff8] rounded-full mix-blend-screen filter blur-[80px] md:blur-[100px] opacity-30 pointer-events-none"></div>
         
-        <h2 className="font-pacifico text-3xl md:text-5xl text-white mb-8 max-w-4xl drop-shadow-md leading-relaxed z-10">
+        <h2 className="font-pacifico text-2xl sm:text-3xl md:text-5xl text-white mb-8 max-w-4xl drop-shadow-md leading-relaxed z-10">
           Experience the ultimate retro vintage thrifting revolution this spectacular weekend.
         </h2>
         
         <Link
           href="/apply"
-          className="z-10 flex items-center justify-center px-10 py-5 bg-[#ff1493] text-[#ffffff] font-anton text-2xl tracking-widest uppercase shadow-[6px_6px_0px_#0fdff8] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_#0fdff8] transition-all"
+          className="z-10 flex items-center justify-center px-8 py-4 md:px-10 md:py-5 bg-[#ff1493] text-[#ffffff] font-anton text-xl md:text-2xl tracking-widest uppercase shadow-[4px_4px_0px_#0fdff8] md:shadow-[6px_6px_0px_#0fdff8] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all"
         >
           Get Tickets Now
         </Link>
@@ -479,7 +478,8 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-6 lg:px-12 py-16 md:py-24">
         <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
           <div className="w-full md:w-5/12 relative group">
-            <div className="absolute inset-0 bg-[#fadf29] translate-x-4 translate-y-4 rounded-lg"></div>
+            {/* Offset bayangan dikurangi di HP agar tidak meluber */}
+            <div className="absolute inset-0 bg-[#fadf29] translate-x-3 translate-y-3 md:translate-x-4 md:translate-y-4 rounded-lg"></div>
             <img 
               src="assets/images/home-image.png" 
               alt="80s Fashion Portrait" 
@@ -487,12 +487,12 @@ export default function Home() {
             />
           </div>
           
-          <div className="w-full md:w-7/12 flex flex-col gap-6">
-            <h2 className="font-anton text-5xl md:text-6xl lg:text-7xl text-[#0fdff8] uppercase leading-none drop-shadow-[3px_3px_0px_#144333]">
+          <div className="w-full md:w-7/12 flex flex-col gap-6 text-center md:text-left">
+            <h2 className="font-anton text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-[#0fdff8] uppercase leading-none drop-shadow-[2px_2px_0px_#144333] md:drop-shadow-[3px_3px_0px_#144333]">
               WELCOME BACK TO THE <br />
               <span className="text-[#ff1493]">80'S THRIFT FEST 2026</span>
             </h2>
-            <div className="flex flex-col gap-4 text-lg md:text-xl text-[#eaddce]/90 leading-relaxed font-light">
+            <div className="flex flex-col gap-4 text-base md:text-xl text-[#eaddce]/90 leading-relaxed font-light">
               <p>
                 Get ready to travel back in time to the most vibrant decade! The 80's Thrift Fest is more than just a shopping event; it is a full-blown celebration of nostalgia, sustainable fashion, and synthwave culture.
               </p>
@@ -504,33 +504,33 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. 3 STATS ELEMENTS (KIRI - TENGAH - KANAN) */}
+      {/* 6. 3 STATS ELEMENTS */}
       <section className="w-full bg-[#144333] py-16 border-y-4 border-[#0fdff8]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center divide-y-2 md:divide-y-0 md:divide-x-2 divide-[#0fdff8]/30">
-            <div className="flex flex-col items-center justify-center pt-6 md:pt-0">
-              <h3 className="font-anton text-6xl md:text-7xl text-[#fadf29] drop-shadow-[2px_2px_0px_#ff1493]">500+</h3>
-              <p className="font-roboto font-bold text-xl uppercase tracking-widest mt-2 text-white">Brands & Designers</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-[#0fdff8]/30">
+            <div className="flex flex-col items-center justify-center pt-6 sm:pt-0">
+              <h3 className="font-anton text-5xl md:text-7xl text-[#fadf29] drop-shadow-[2px_2px_0px_#ff1493]">500+</h3>
+              <p className="font-roboto font-bold text-lg md:text-xl uppercase tracking-widest mt-2 text-white">Brands & Designers</p>
             </div>
-            <div className="flex flex-col items-center justify-center pt-6 md:pt-0">
-              <h3 className="font-anton text-6xl md:text-7xl text-[#fadf29] drop-shadow-[2px_2px_0px_#ff1493]">200+</h3>
-              <p className="font-roboto font-bold text-xl uppercase tracking-widest mt-2 text-white">Exclusive Launches</p>
+            <div className="flex flex-col items-center justify-center pt-6 sm:pt-0">
+              <h3 className="font-anton text-5xl md:text-7xl text-[#fadf29] drop-shadow-[2px_2px_0px_#ff1493]">200+</h3>
+              <p className="font-roboto font-bold text-lg md:text-xl uppercase tracking-widest mt-2 text-white">Exclusive Launches</p>
             </div>
-            <div className="flex flex-col items-center justify-center pt-6 md:pt-0">
-              <h3 className="font-anton text-6xl md:text-7xl text-[#fadf29] drop-shadow-[2px_2px_0px_#ff1493]">5K+</h3>
-              <p className="font-roboto font-bold text-xl uppercase tracking-widest mt-2 text-white">Visitors Last Edition</p>
+            <div className="flex flex-col items-center justify-center pt-6 sm:pt-0">
+              <h3 className="font-anton text-5xl md:text-7xl text-[#fadf29] drop-shadow-[2px_2px_0px_#ff1493]">5K+</h3>
+              <p className="font-roboto font-bold text-lg md:text-xl uppercase tracking-widest mt-2 text-white">Visitors Last Edition</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* 7. TICKETING INFO & 4 EXPERIENCES GRID */}
-      <section className="py-24 px-6 max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="font-anton text-4xl md:text-6xl text-[#ff1493] uppercase mb-6 drop-shadow-md">
+      <section className="py-20 md:py-24 px-6 max-w-6xl mx-auto">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="font-anton text-3xl sm:text-4xl md:text-6xl text-[#ff1493] uppercase mb-4 md:mb-6 drop-shadow-md">
             BACK2ERAS IS TICKETED DAILY
           </h2>
-          <div className="text-lg text-[#eaddce]/80 max-w-4xl mx-auto flex flex-col gap-4">
+          <div className="text-base md:text-lg text-[#eaddce]/80 max-w-4xl mx-auto flex flex-col gap-4 px-2">
             <p>
               1-Day Passes are available for single-day access on Friday, Saturday or Sunday, starting from Rp 50.000. Ticket bundles save you up to 30% off.
             </p>
@@ -543,69 +543,77 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           <div className="flex flex-col items-center text-center gap-4 bg-white/5 p-6 rounded-xl border border-white/10 hover:border-[#0fdff8] hover:bg-white/10 transition-colors">
-            <div className="w-16 h-16 bg-[#144333] rounded-full flex items-center justify-center text-[#0fdff8] border-2 border-[#0fdff8]">
-              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <div className="w-14 h-14 md:w-16 md:h-16 bg-[#144333] rounded-full flex items-center justify-center text-[#0fdff8] border-2 border-[#0fdff8]">
+              <svg className="w-7 h-7 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             </div>
-            <h4 className="font-anton text-xl uppercase tracking-wide text-white">ACCESS TO EXCLUSIVES</h4>
+            <h4 className="font-anton text-lg md:text-xl uppercase tracking-wide text-white">ACCESS TO EXCLUSIVES</h4>
           </div>
 
           <div className="flex flex-col items-center text-center gap-4 bg-white/5 p-6 rounded-xl border border-white/10 hover:border-[#fadf29] hover:bg-white/10 transition-colors">
-            <div className="w-16 h-16 bg-[#144333] rounded-full flex items-center justify-center text-[#fadf29] border-2 border-[#fadf29]">
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8 7h8M8 11h8m-9 4h10l1.5-6H4.5L6 15zm-1.5 4h15m-15 0a1.5 1.5 0 001.5 1.5h12a1.5 1.5 0 001.5-1.5m-15 0a1.5 1.5 0 01-1.5-1.5v-2h18v2a1.5 1.5 0 01-1.5 1.5z"/></svg>
+            <div className="w-14 h-14 md:w-16 md:h-16 bg-[#144333] rounded-full flex items-center justify-center text-[#fadf29] border-2 border-[#fadf29]">
+              <svg className="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8 7h8M8 11h8m-9 4h10l1.5-6H4.5L6 15zm-1.5 4h15m-15 0a1.5 1.5 0 001.5 1.5h12a1.5 1.5 0 001.5-1.5m-15 0a1.5 1.5 0 01-1.5-1.5v-2h18v2a1.5 1.5 0 01-1.5 1.5z"/></svg>
             </div>
-            <h4 className="font-anton text-xl uppercase tracking-wide text-white">FREE SHUTTLE SERVICE</h4>
+            <h4 className="font-anton text-lg md:text-xl uppercase tracking-wide text-white">FREE SHUTTLE SERVICE</h4>
           </div>
 
           <div className="flex flex-col items-center text-center gap-4 bg-white/5 p-6 rounded-xl border border-white/10 hover:border-[#ff1493] hover:bg-white/10 transition-colors">
-            <div className="w-16 h-16 bg-[#144333] rounded-full flex items-center justify-center text-[#ff1493] border-2 border-[#ff1493]">
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/></svg>
+            <div className="w-14 h-14 md:w-16 md:h-16 bg-[#144333] rounded-full flex items-center justify-center text-[#ff1493] border-2 border-[#ff1493]">
+              <svg className="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/></svg>
             </div>
-            <h4 className="font-anton text-xl uppercase tracking-wide text-white">ACTIVITIES & EXPERIENCES</h4>
+            <h4 className="font-anton text-lg md:text-xl uppercase tracking-wide text-white">ACTIVITIES & EXPERIENCES</h4>
           </div>
 
           <div className="flex flex-col items-center text-center gap-4 bg-white/5 p-6 rounded-xl border border-white/10 hover:border-[#13bbad] hover:bg-white/10 transition-colors">
-            <div className="w-16 h-16 bg-[#144333] rounded-full flex items-center justify-center text-[#13bbad] border-2 border-[#13bbad]">
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            <div className="w-14 h-14 md:w-16 md:h-16 bg-[#144333] rounded-full flex items-center justify-center text-[#13bbad] border-2 border-[#13bbad]">
+              <svg className="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
             </div>
-            <h4 className="font-anton text-xl uppercase tracking-wide text-white">CONNECTING WITH DESIGNERS</h4>
+            <h4 className="font-anton text-lg md:text-xl uppercase tracking-wide text-white">CONNECTING WITH DESIGNERS</h4>
           </div>
         </div>
       </section>
 
       {/* 8. OPENING HOURS & GET TICKET BUTTON */}
-      <section className="pb-24 pt-8 px-6 flex flex-col items-center justify-center text-center">
-        <div className="border-4 border-[#fadf29] bg-[#144333]/40 p-8 md:p-12 shadow-[10px_10px_0px_#ff1493] max-w-2xl w-full mb-12">
-          <h2 className="font-anton text-3xl md:text-5xl text-[#0fdff8] uppercase mb-8">
+      <section className="pb-20 md:pb-24 pt-4 md:pt-8 px-6 flex flex-col items-center justify-center text-center">
+        <div className="border-4 border-[#fadf29] bg-[#144333]/40 p-6 sm:p-8 md:p-12 shadow-[6px_6px_0px_#ff1493] md:shadow-[10px_10px_0px_#ff1493] max-w-2xl w-full mb-10 md:mb-12">
+          <h2 className="font-anton text-3xl md:text-5xl text-[#0fdff8] uppercase mb-6 md:mb-8">
             OPENING HOURS
           </h2>
-          <div className="font-roboto font-bold text-xl md:text-2xl text-white flex flex-col gap-4 tracking-wide">
-            <p>Friday – Sunday <span className="text-[#fadf29] mx-2">|</span> 8:00 AM – 9:00 PM</p>
-            <p>Monday – Tuesday <span className="text-[#fadf29] mx-2">|</span> 3:00 PM – 9:00 PM</p>
+          <div className="font-roboto font-bold text-lg md:text-2xl text-white flex flex-col gap-4 tracking-wide">
+            <p className="flex flex-col sm:flex-row justify-center items-center gap-1 sm:gap-0">
+              Friday – Sunday <span className="hidden sm:inline text-[#fadf29] mx-2">|</span> 
+              <span className="sm:hidden text-[#fadf29]">▼</span>
+              8:00 AM – 9:00 PM
+            </p>
+            <p className="flex flex-col sm:flex-row justify-center items-center gap-1 sm:gap-0">
+              Monday – Tuesday <span className="hidden sm:inline text-[#fadf29] mx-2">|</span> 
+              <span className="sm:hidden text-[#fadf29]">▼</span>
+              3:00 PM – 9:00 PM
+            </p>
           </div>
         </div>
         
         <Link
           href="/apply"
-          className="inline-block px-12 py-5 bg-[#0fdff8] text-[#000000] font-anton text-3xl tracking-widest uppercase shadow-[6px_6px_0px_#fadf29] hover:-translate-y-2 hover:shadow-[6px_10px_0px_#fadf29] transition-all"
+          className="inline-block px-8 py-4 md:px-12 md:py-5 bg-[#0fdff8] text-[#000000] font-anton text-xl md:text-3xl tracking-widest uppercase shadow-[4px_4px_0px_#fadf29] md:shadow-[6px_6px_0px_#fadf29] hover:-translate-y-2 hover:shadow-none transition-all"
         >
           GET TICKETS NOW
         </Link>
       </section>
 
       {/* 9. BRANDS LOGOS SPONSOR SECTION */}
-      <section className="w-full bg-white py-12 border-t-8 border-[#13bbad]">
+      <section className="w-full bg-white py-10 md:py-12 border-t-8 border-[#13bbad]">
         <div className="max-w-7xl mx-auto px-6">
-          <h3 className="text-center font-anton text-2xl text-gray-400 uppercase tracking-widest mb-8">
+          <h3 className="text-center font-anton text-xl md:text-2xl text-gray-400 uppercase tracking-widest mb-6 md:mb-8">
             Supported By
           </h3>
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-            <span className="font-pacifico text-3xl md:text-4xl text-black">RetroWear</span>
-            <span className="font-anton text-3xl md:text-4xl text-black uppercase">Synth&Co</span>
-            <span className="font-roboto font-black text-3xl md:text-4xl text-black italic">VINTAGE VAULT</span>
-            <span className="font-anton text-3xl md:text-4xl text-black uppercase tracking-widest">NeonCity</span>
-            <span className="font-pacifico text-3xl md:text-4xl text-black">Waroeng Depe</span>
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+            <span className="font-pacifico text-2xl md:text-4xl text-black">RetroWear</span>
+            <span className="font-anton text-2xl md:text-4xl text-black uppercase">Synth&Co</span>
+            <span className="font-roboto font-black text-2xl md:text-4xl text-black italic">VINTAGE VAULT</span>
+            <span className="font-anton text-2xl md:text-4xl text-black uppercase tracking-widest">NeonCity</span>
+            <span className="font-pacifico text-2xl md:text-4xl text-black">Waroeng Depe</span>
           </div>
         </div>
       </section>
