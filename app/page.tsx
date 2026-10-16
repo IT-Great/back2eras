@@ -1,69 +1,116 @@
-import Image from "next/image";
+// import Image from "next/image";
+
+// export default function Home() {
+//   return (
+//     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+//       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+//         <Image
+//           className="dark:invert h-5 w-[100px]"
+//           src="/next.svg"
+//           alt="Next.js logo"
+//           width={100}
+//           height={20}
+//           priority
+//         />
+//         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
+//           <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
+//             To get started, edit the{" "}
+//             <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
+//               page.tsx
+//             </code>{" "}
+//             file.
+//           </h1>
+//           <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+//             Looking for a starting point or more instructions? Head over to{" "}
+//             <a
+//               href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+//               className="font-medium text-zinc-950 dark:text-zinc-50"
+//             >
+//               Templates
+//             </a>{" "}
+//             or the{" "}
+//             <a
+//               href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+//               className="font-medium text-zinc-950 dark:text-zinc-50"
+//             >
+//               Learning
+//             </a>{" "}
+//             center.
+//           </p>
+//         </div>
+//         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+//           <a
+//             className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
+//             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+//             target="_blank"
+//             rel="noopener noreferrer"
+//           >
+//             <Image
+//               className="dark:invert h-[14px] w-4"
+//               src="/vercel.svg"
+//               alt="Vercel logomark"
+//               width={16}
+//               height={14}
+//             />
+//             Deploy Now
+//           </a>
+//           <a
+//             className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
+//             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+//             target="_blank"
+//             rel="noopener noreferrer"
+//           >
+//             Documentation
+//           </a>
+//         </div>
+//       </main>
+//     </div>
+//   );
+// }
+
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="flex flex-col flex-1 items-center justify-center bg-[#000000] overflow-hidden relative">
+      
+      {/* Background Ornaments (Menciptakan gaya Vintage Collage / Neon) */}
+      <div className="absolute top-10 left-10 w-32 h-32 bg-[#ff1493] rounded-full mix-blend-screen filter blur-3xl opacity-50"></div>
+      <div className="absolute bottom-10 right-10 w-40 h-40 bg-[#0fdff8] rounded-full mix-blend-screen filter blur-3xl opacity-50"></div>
+      
+      {/* Hero Content */}
+      <section className="relative z-10 flex w-full max-w-5xl flex-col items-center justify-center py-32 px-6 text-center">
+        
+        <h2 className="font-pacifico text-[#fe9d04] text-4xl md:text-5xl lg:text-6xl mb-2 transform -rotate-3 drop-shadow-md">
+          Welcome to the
+        </h2>
+        
+        <h1 className="font-anton text-[#0fdff8] text-6xl md:text-8xl lg:text-9xl tracking-wider uppercase mb-6 drop-shadow-[0_0_15px_rgba(15,223,248,0.8)] leading-none">
+          BACK TO 80'S <br/>
+          <span className="text-[#ff1493] drop-shadow-[0_0_15px_rgba(255,20,147,0.8)]">THRIFT FEST</span>
+        </h1>
+        
+        <p className="font-roboto text-[#eaddce] text-lg md:text-2xl leading-relaxed max-w-3xl mb-10 bg-black/40 p-4 rounded-xl backdrop-blur-sm border border-[#13bbad]/30">
+          Rayakan euforia era 80-an melalui kacamata <strong className="text-[#fadf29]">Sustainable Fashion</strong>. 
+          Bawa pakaian lamamu di <em>Vintage Vault Swap</em>, ikuti kelas DIY Customization, dan nikmati Live Music bersama Waroeng Depe!
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-6">
+          <Link
+            href="/apply"
+            className="flex items-center justify-center px-8 py-4 bg-[#ff1493] text-[#ffffff] font-anton text-xl tracking-wide uppercase shadow-[6px_6px_0px_#13bbad] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_#13bbad] transition-all"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Apply as Tenant
+          </Link>
+          <Link
+            href="/stories"
+            className="flex items-center justify-center px-8 py-4 bg-[#fadf29] text-[#144333] font-anton text-xl tracking-wide uppercase shadow-[6px_6px_0px_#fe9d04] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_#fe9d04] transition-all"
           >
-            Documentation
-          </a>
+            Explore Stories
+          </Link>
         </div>
-      </main>
+
+      </section>
     </div>
   );
 }
