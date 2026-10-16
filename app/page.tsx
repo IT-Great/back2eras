@@ -184,9 +184,9 @@ export default function Home() {
             <div className="absolute inset-0 bg-[#fadf29] translate-x-4 translate-y-4 rounded-lg"></div>
             {/* Menggunakan gambar dummy Portrait retro (bisa Anda ganti nanti) */}
             <img 
-              src="assets/images/80s-thrift-fest.jpg" 
+              src="assets/images/home-image.png" 
               alt="80s Fashion Portrait" 
-              className="relative z-10 w-full aspect-[3/4] object-cover rounded-lg border-4 border-[#ff1493] group-hover:-translate-y-2 group-hover:-translate-x-2 transition-transform duration-300"
+              className="relative z-10 w-full aspect-[3/4] object-fit rounded-lg border-4 border-[#ff1493] group-hover:-translate-y-2 group-hover:-translate-x-2 transition-transform duration-300"
             />
           </div>
           
