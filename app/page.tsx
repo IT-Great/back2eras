@@ -358,10 +358,11 @@ import Image from "next/image";
 export default function Home() {
   // --- LOGIKA COUNTDOWN TIMER ---
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false); // Mencegah error hydration dari Next.js
 
   useEffect(() => {
     setMounted(true);
+    // Atur tanggal target acara (27 Nov 2026, 08:00 AM)
     const targetDate = new Date("2026-11-27T08:00:00").getTime();
 
     const interval = setInterval(() => {
@@ -400,28 +401,30 @@ export default function Home() {
         }
       `}} />
 
-      {/* 1. TOP BANNER - Disesuaikan tingginya agar proporsional di HP & Desktop */}
-      <section className="relative w-full h-[50vh] md:h-[70vh] lg:h-[90vh] border-b-4 border-[#13bbad]">
+      {/* 1. TOP BANNER - Memakai ukuran spesifik 1920x1080 (Rasio 16:9) */}
+      <section className="relative w-full border-b-4 border-[#13bbad]">
         <Image 
           src="/assets/images/home-banner.jpg" 
           alt="Home Banner 80s Thrift Fest"
-          fill
+          width={1920}
+          height={1080}
           priority
-          className="object-cover"
+          className="w-full h-auto object-cover block"
         />
         <div className="absolute inset-0 bg-black/20"></div>
       </section>
 
       {/* 2. BAR HITAM TEKS BERJALAN (MARQUEE) */}
       <section className="bg-[#000000] py-3 border-b-4 border-[#ff1493] overflow-hidden flex whitespace-nowrap">
-        <div className="animate-marquee font-anton text-[#fadf29] text-lg md:text-2xl tracking-widest uppercase">
+        <div className="animate-marquee font-anton text-[#fadf29] text-xl md:text-2xl tracking-widest uppercase">
           <span className="mx-4">⚡ WELCOME TO THE 80'S THRIFT FEST ⚡ NEON VIBES ⚡ SUSTAINABLE FASHION ⚡ VINTAGE VAULT ⚡ LIVE SYNTHWAVE ⚡ RETRO ARCADE ⚡</span>
           <span className="mx-4">⚡ WELCOME TO THE 80'S THRIFT FEST ⚡ NEON VIBES ⚡ SUSTAINABLE FASHION ⚡ VINTAGE VAULT ⚡ LIVE SYNTHWAVE ⚡ RETRO ARCADE ⚡</span>
         </div>
       </section>
 
-      {/* 3. COUNTDOWN TIMER - Diubah menjadi Grid agar aman di layar HP sempit */}
+      {/* 3. NEW SECTION: COUNTDOWN TIMER */}
       <section className="py-12 px-4 bg-[#000000] border-b-4 border-[#0fdff8] flex flex-col items-center justify-center relative overflow-hidden">
+        {/* Efek grid retro di latar belakang */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(19,187,173,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(19,187,173,0.1)_1px,transparent_1px)] bg-[size:20px_20px] opacity-30 pointer-events-none"></div>
 
         <h2 className="font-pacifico text-2xl md:text-4xl text-[#ff1493] mb-8 z-10 drop-shadow-[2px_2px_0px_#144333] text-center">
@@ -478,7 +481,6 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-6 lg:px-12 py-16 md:py-24">
         <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
           <div className="w-full md:w-5/12 relative group">
-            {/* Offset bayangan dikurangi di HP agar tidak meluber */}
             <div className="absolute inset-0 bg-[#fadf29] translate-x-3 translate-y-3 md:translate-x-4 md:translate-y-4 rounded-lg"></div>
             <img 
               src="assets/images/home-image.png" 
