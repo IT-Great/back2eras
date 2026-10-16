@@ -306,6 +306,7 @@ export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const menuLinks = [
+    { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
     { name: "Stories", path: "/stories" },
     { name: "Apply for The Event", path: "/apply" },

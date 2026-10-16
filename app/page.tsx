@@ -182,7 +182,7 @@ export default function Home() {
           {/* Kiri: Potrait Image */}
           <div className="w-full md:w-5/12 relative group">
             <div className="absolute inset-0 bg-[#fadf29] translate-x-4 translate-y-4 rounded-lg"></div>
-            
+
             {/* Menggunakan gambar dummy Portrait retro (bisa Anda ganti nanti) */}
             <img 
               src="assets/images/home-image.png" 
@@ -231,7 +231,7 @@ export default function Home() {
 
       {/* 6. TICKETING INFO & 4 EXPERIENCES GRID */}
       <section className="py-24 px-6 max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        {/* <div className="text-center mb-16">
           <h2 className="font-anton text-4xl md:text-6xl text-[#ff1493] uppercase mb-6 drop-shadow-md">
             BACK2ERAS IS TICKETED DAILY
           </h2>
@@ -241,6 +241,23 @@ export default function Home() {
             </p>
             <p>
               For unlimited access to all 3 days of the event, get a 3-Day Pass for $19. Only a limited number of 3-Day Passes are available.
+            </p>
+            <p className="font-bold text-[#fadf29]">
+              Children under 12 always enter for free. Your ticket includes:
+            </p>
+          </div>
+        </div> */}
+
+        <div className="text-center mb-16">
+          <h2 className="font-anton text-4xl md:text-6xl text-[#ff1493] uppercase mb-6 drop-shadow-md">
+            BACK2ERAS IS TICKETED DAILY
+          </h2>
+          <div className="text-lg text-[#eaddce]/80 max-w-4xl mx-auto flex flex-col gap-4">
+            <p>
+              1-Day Passes are available for single-day access on Friday, Saturday or Sunday, starting from Rp 50.000. Ticket bundles save you up to 30% off.
+            </p>
+            <p>
+              For unlimited access to all 3 days of the event, get a 3-Day Pass for Rp 120.000. Only a limited number of 3-Day Passes are available.
             </p>
             <p className="font-bold text-[#fadf29]">
               Children under 12 always enter for free. Your ticket includes:
