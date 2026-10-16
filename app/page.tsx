@@ -182,6 +182,7 @@ export default function Home() {
           {/* Kiri: Potrait Image */}
           <div className="w-full md:w-5/12 relative group">
             <div className="absolute inset-0 bg-[#fadf29] translate-x-4 translate-y-4 rounded-lg"></div>
+            
             {/* Menggunakan gambar dummy Portrait retro (bisa Anda ganti nanti) */}
             <img 
               src="assets/images/home-image.png" 
