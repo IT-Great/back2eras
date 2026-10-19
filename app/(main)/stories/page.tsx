@@ -567,7 +567,7 @@ export default function StoriesPage() {
 
   // Mengambil data dari Laravel
   useEffect(() => {
-    fetch("https://backend-back2eras.vercel.app/api/stories")
+    fetch("https://backend-back2eras.vercel.app/apiapi/stories")
       .then((res) => res.json())
       .then((data) => {
         setStories(data);
