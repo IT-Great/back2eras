@@ -286,6 +286,8 @@
 
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 // 1. MENGAMBIL DATA BERDASARKAN SLUG SAJA
 async function getStory(slug: string) {
   // CATATAN: Pastikan URL backend Anda benar, gunakan satu garis miring (/)
