@@ -11,6 +11,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const adminLinks = [
     { name: "Applications", path: "/admin/apply", icon: "📋" },
     { name: "Vendor Categories", path: "/admin/categories", icon: "📁" },
+    { name: "Stories", path: "/admin/stories", icon: "📰" },
   ];
 
   return (
