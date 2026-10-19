@@ -292,7 +292,7 @@ export const instant = false;
 async function getStory(slug: string) {
   // CATATAN: Pastikan URL backend Anda benar, gunakan satu garis miring (/)
   // Ganti URL localhost ini dengan URL Vercel backend Anda jika sudah di-deploy
-  const res = await fetch(`https://backend-back2eras.vercel.app/apiapi/stories/${slug}`, {
+  const res = await fetch(`https://backend-back2eras.vercel.app/api/api/stories/${slug}`, {
     next: { revalidate: 60 } 
   });
   
