@@ -20,7 +20,7 @@ export default function ManageStories() {
 
   const fetchStories = async () => {
     try {
-      const res = await fetch("http://localhost:8000/api/stories");
+      const res = await fetch("https://backend-back2eras.vercel.app//api/stories");
       const data = await res.json();
       setStories(data);
     } catch (error) {
@@ -81,7 +81,7 @@ export default function ManageStories() {
     });
 
     if (formValues) {
-      const url = story ? `http://localhost:8000/api/stories/${story.id}` : "http://localhost:8000/api/stories";
+      const url = story ? `https://backend-back2eras.vercel.app//api/stories/${story.id}` : "https://backend-back2eras.vercel.app//api/stories";
       const method = story ? "PUT" : "POST";
       
       try {
@@ -116,7 +116,7 @@ export default function ManageStories() {
     
     if (res.isConfirmed) {
       try {
-        await fetch(`http://localhost:8000/api/stories/${id}`, { method: "DELETE" });
+        await fetch(`https://backend-back2eras.vercel.app//api/stories/${id}`, { method: "DELETE" });
         Swal.fire("Deleted!", "Story has been deleted.", "success");
         fetchStories();
       } catch (error) {

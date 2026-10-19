@@ -289,7 +289,7 @@ import { notFound } from "next/navigation";
 
 // Mengambil data spesifik berdasarkan Slug
 async function getStory(slug: string) {
-  const res = await fetch(`http://localhost:8000/api/stories/${slug}`, {
+  const res = await fetch(`https://backend-back2eras.vercel.app//api/stories/${slug}`, {
     // Revalidasi setiap 60 detik (ISR) agar artikel update tanpa harus build ulang
     next: { revalidate: 60 } 
   });
@@ -300,7 +300,7 @@ async function getStory(slug: string) {
 
 export async function generateStaticParams() {
   try {
-    const res = await fetch("http://localhost:8000/api/stories");
+    const res = await fetch("https://backend-back2eras.vercel.app//api/stories");
     const stories = await res.json();
     return stories.map((story: { slug: string }) => ({ slug: story.slug }));
   } catch (error) {

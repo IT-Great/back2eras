@@ -17,7 +17,7 @@
 //   const [categories, setCategories] = useState<VendorCategory[]>([]);
 
 //   const fetchCategories = async () => {
-//     const res = await fetch("http://localhost:8000/api/vendor-categories");
+//     const res = await fetch("https://backend-back2eras.vercel.app//api/vendor-categories");
 //     const data = await res.json();
 //     setCategories(data);
 //   };
@@ -50,7 +50,7 @@
 //     });
 
 //     if (formValues) {
-//       const url = cat ? `http://localhost:8000/api/vendor-categories/${cat.id}` : "http://localhost:8000/api/vendor-categories";
+//       const url = cat ? `https://backend-back2eras.vercel.app//api/vendor-categories/${cat.id}` : "https://backend-back2eras.vercel.app//api/vendor-categories";
 //       const method = cat ? "PUT" : "POST";
       
 //       await fetch(url, {
@@ -66,7 +66,7 @@
 //   const handleDelete = async (id: number) => {
 //     const res = await Swal.fire({ title: "Delete?", text: "This cannot be undone.", icon: "warning", showCancelButton: true });
 //     if (res.isConfirmed) {
-//       await fetch(`http://localhost:8000/api/vendor-categories/${id}`, { method: "DELETE" });
+//       await fetch(`https://backend-back2eras.vercel.app//api/vendor-categories/${id}`, { method: "DELETE" });
 //       Swal.fire("Deleted!", "", "success");
 //       fetchCategories();
 //     }
@@ -118,7 +118,7 @@
 //   const [categories, setCategories] = useState<VendorCategory[]>([]);
 
 //   const fetchCategories = async () => {
-//     const res = await fetch("http://localhost:8000/api/vendor-categories");
+//     const res = await fetch("https://backend-back2eras.vercel.app//api/vendor-categories");
 //     const data = await res.json();
 //     setCategories(data);
 //   };
@@ -151,7 +151,7 @@
 //     });
 
 //     if (formValues) {
-//       const url = cat ? `http://localhost:8000/api/vendor-categories/${cat.id}` : "http://localhost:8000/api/vendor-categories";
+//       const url = cat ? `https://backend-back2eras.vercel.app//api/vendor-categories/${cat.id}` : "https://backend-back2eras.vercel.app//api/vendor-categories";
 //       const method = cat ? "PUT" : "POST";
       
 //       await fetch(url, {
@@ -167,7 +167,7 @@
 //   const handleDelete = async (id: number) => {
 //     const res = await Swal.fire({ title: "Delete?", text: "This cannot be undone.", icon: "warning", showCancelButton: true, confirmButtonColor: "#ff1493" });
 //     if (res.isConfirmed) {
-//       await fetch(`http://localhost:8000/api/vendor-categories/${id}`, { method: "DELETE" });
+//       await fetch(`https://backend-back2eras.vercel.app//api/vendor-categories/${id}`, { method: "DELETE" });
 //       Swal.fire("Deleted!", "", "success");
 //       fetchCategories();
 //     }
@@ -226,7 +226,7 @@ export default function ManageCategories() {
   const [categories, setCategories] = useState<VendorCategory[]>([]);
 
   const fetchCategories = async () => {
-    const res = await fetch("http://localhost:8000/api/vendor-categories");
+    const res = await fetch("https://backend-back2eras.vercel.app//api/vendor-categories");
     const data = await res.json();
     setCategories(data);
   };
@@ -259,7 +259,7 @@ export default function ManageCategories() {
     });
 
     if (formValues) {
-      const url = cat ? `http://localhost:8000/api/vendor-categories/${cat.id}` : "http://localhost:8000/api/vendor-categories";
+      const url = cat ? `https://backend-back2eras.vercel.app//api/vendor-categories/${cat.id}` : "https://backend-back2eras.vercel.app//api/vendor-categories";
       const method = cat ? "PUT" : "POST";
       
       await fetch(url, {
@@ -275,7 +275,7 @@ export default function ManageCategories() {
   const handleDelete = async (id: number) => {
     const res = await Swal.fire({ title: "Delete?", text: "This cannot be undone.", icon: "warning", showCancelButton: true, confirmButtonColor: "#ff1493" });
     if (res.isConfirmed) {
-      await fetch(`http://localhost:8000/api/vendor-categories/${id}`, { method: "DELETE" });
+      await fetch(`https://backend-back2eras.vercel.app//api/vendor-categories/${id}`, { method: "DELETE" });
       Swal.fire("Deleted!", "", "success");
       fetchCategories();
     }
