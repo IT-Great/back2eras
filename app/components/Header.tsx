@@ -311,6 +311,9 @@ export default function Header() {
     { name: "Stories", path: "/stories" },
     { name: "Apply for The Event", path: "/apply" },
     { name: "Contact Us", path: "/contact" },
+    { name: "Visitor Registration", path: "/register" },
+    { name: "Tenant Registration", path: "/tenants" },
+    { name: "Sponsorship & Partnership", path: "/partners" },
   ];
 
   return (
