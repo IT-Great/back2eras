@@ -462,7 +462,7 @@ export default function Home() {
       </section>
 
       {/* 4. SHORT COPY & BUTTON */}
-      <section className="py-16 md:py-24 px-6 flex flex-col items-center justify-center text-center relative">
+      {/* <section className="py-16 md:py-24 px-6 flex flex-col items-center justify-center text-center relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 bg-[#0fdff8] rounded-full mix-blend-screen filter blur-[80px] md:blur-[100px] opacity-30 pointer-events-none"></div>
         
         <h2 className="font-pacifico text-2xl sm:text-3xl md:text-5xl text-white mb-8 max-w-4xl drop-shadow-md leading-relaxed z-10">
@@ -475,6 +475,16 @@ export default function Home() {
         >
           Get Tickets Now
         </Link>
+      </section> */}
+
+      {/* 4. SHORT COPY */}
+      <section className="py-12 md:py-16 px-6 flex flex-col items-center justify-center text-center relative">
+        {/* Efek Cahaya Neon di Belakang Teks */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 bg-[#0fdff8] rounded-full mix-blend-screen filter blur-[80px] md:blur-[100px] opacity-30 pointer-events-none"></div>
+        
+        <h2 className="font-pacifico text-2xl sm:text-3xl md:text-5xl text-white max-w-4xl drop-shadow-md leading-relaxed z-10">
+          Experience the ultimate retro vintage thrifting revolution this spectacular weekend.
+        </h2>
       </section>
 
       {/* 5. POTRAIT IMAGE & WELCOME TEXT */}
@@ -596,12 +606,12 @@ export default function Home() {
           </div>
         </div>
         
-        <Link
+        {/* <Link
           href="/apply"
           className="inline-block px-8 py-4 md:px-12 md:py-5 bg-[#0fdff8] text-[#000000] font-anton text-xl md:text-3xl tracking-widest uppercase shadow-[4px_4px_0px_#fadf29] md:shadow-[6px_6px_0px_#fadf29] hover:-translate-y-2 hover:shadow-none transition-all"
         >
           GET TICKETS NOW
-        </Link>
+        </Link> */}
       </section>
 
       {/* 9. BRANDS LOGOS SPONSOR SECTION */}

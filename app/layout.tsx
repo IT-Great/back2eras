@@ -82,60 +82,82 @@
 //   );
 // }
 
+// import type { Metadata } from "next";
+// import { Anton, Pacifico, Roboto_Condensed } from "next/font/google";
+// import "./globals.css";
+// import Header from "./components/Header";
+// import Footer from "./components/Footer";
+// import FloatingWA from "./components/FloatingWA"; // 1. IMPORT KOMPONEN WA
+
+// // Headline
+// const fontAnton = Anton({
+//   weight: "400",
+//   variable: "--font-anton",
+//   subsets: ["latin"],
+// });
+
+// // Sub Headline
+// const fontPacifico = Pacifico({
+//   weight: "400",
+//   variable: "--font-pacifico",
+//   subsets: ["latin"],
+// });
+
+// // Body
+// const fontRobotoCondensed = Roboto_Condensed({
+//   variable: "--font-roboto-condensed",
+//   subsets: ["latin"],
+// });
+
+// export const metadata: Metadata = {
+//   title: "BACK TO 80'S ERA THRIFT FESTIVAL",
+//   description: "Festival thrifting bergaya 80-an oleh Waroeng Depe. Sustainable fashion, DIY customization, music, and more!",
+// };
+
+// export default function RootLayout({
+//   children,
+// }: Readonly<{
+//   children: React.ReactNode;
+// }>) {
+//   return (
+//     <html lang="id" className={`${fontAnton.variable} ${fontPacifico.variable} ${fontRobotoCondensed.variable} h-full antialiased`}>
+//       <body className="min-h-full flex flex-col bg-[#eaddce] text-[#000000] font-roboto relative">
+//         {/* Render Header Component */}
+//         <Header />
+        
+//         {/* Main Content Area */}
+//         <main className="flex-1 w-full flex flex-col">
+//           {children}
+//         </main>
+
+//         {/* Render Footer Component */}
+//         <Footer />
+
+//         {/* 2. RENDER TOMBOL WA DI SINI AGAR MUNCUL DI SEMUA HALAMAN */}
+//         <FloatingWA />
+//       </body>
+//     </html>
+//   );
+// }
+
 import type { Metadata } from "next";
-import { Anton, Pacifico, Roboto_Condensed } from "next/font/google";
-import "./globals.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import FloatingWA from "./components/FloatingWA"; // 1. IMPORT KOMPONEN WA
+import "./globals.css"; // Pastikan import CSS global Anda tetap ada
 
-// Headline
-const fontAnton = Anton({
-  weight: "400",
-  variable: "--font-anton",
-  subsets: ["latin"],
-});
-
-// Sub Headline
-const fontPacifico = Pacifico({
-  weight: "400",
-  variable: "--font-pacifico",
-  subsets: ["latin"],
-});
-
-// Body
-const fontRobotoCondensed = Roboto_Condensed({
-  variable: "--font-roboto-condensed",
-  subsets: ["latin"],
-});
-
+// Jika Anda memakai font next/font/google, biarkan import-nya di sini
 export const metadata: Metadata = {
-  title: "BACK TO 80'S ERA THRIFT FESTIVAL",
-  description: "Festival thrifting bergaya 80-an oleh Waroeng Depe. Sustainable fashion, DIY customization, music, and more!",
+  title: "Back to 80's Era Thrift Fest",
+  description: "Experience the ultimate retro vintage thrifting revolution.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="id" className={`${fontAnton.variable} ${fontPacifico.variable} ${fontRobotoCondensed.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-[#eaddce] text-[#000000] font-roboto relative">
-        {/* Render Header Component */}
-        <Header />
-        
-        {/* Main Content Area */}
-        <main className="flex-1 w-full flex flex-col">
-          {children}
-        </main>
-
-        {/* Render Footer Component */}
-        <Footer />
-
-        {/* 2. RENDER TOMBOL WA DI SINI AGAR MUNCUL DI SEMUA HALAMAN */}
-        <FloatingWA />
-      </body>
+    <html lang="en">
+      {/* Jangan masukkan Navbar & Footer di sini lagi */}
+      <body>{children}</body>
     </html>
   );
 }

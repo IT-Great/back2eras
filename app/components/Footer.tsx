@@ -345,9 +345,45 @@ export default function Footer() {
   ];
 
   // Fungsi sederhana untuk menangani tombol Subscribe
-  const handleSubscribe = (e: React.FormEvent) => {
+  // const handleSubscribe = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   alert("Thank you for subscribing to our newsletter! (Demo Mode)");
+  // };
+
+  // Fungsi untuk menangani tombol Subscribe ke Backend
+  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert("Thank you for subscribing to our newsletter! (Demo Mode)");
+    
+    const form = e.currentTarget;
+    const emailInput = form.elements.namedItem('email') as HTMLInputElement;
+
+    try {
+      const response = await fetch('http://localhost:8000/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({ email: emailInput.value })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert(data.message); // Menampilkan pesan sukses dari Laravel
+        form.reset();        // Kosongkan form setelah sukses
+      } else {
+        // Tangkap error validasi dari Laravel (misal: email duplikat)
+        if (data.errors && data.errors.email) {
+          alert(data.errors.email[0]);
+        } else {
+          alert("Error: " + (data.message || "Failed to subscribe."));
+        }
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Gagal terhubung ke server.");
+    }
   };
 
   return (
@@ -479,6 +515,7 @@ export default function Footer() {
             >
               <input 
                 type="email" 
+                name="email"
                 placeholder="your.email@example.com" 
                 required
                 className="w-full bg-[#000000]/50 border-2 border-[#13bbad] p-3 text-[#ffffff] font-roboto focus:outline-none focus:border-[#ff1493] rounded transition-all placeholder:text-[#eaddce]/40"
