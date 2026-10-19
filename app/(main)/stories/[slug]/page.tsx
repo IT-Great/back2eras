@@ -285,12 +285,12 @@
 // }
 
 import Link from "next/link";
-import { notFound } from "next/navigation";
 
-// Mengambil data spesifik berdasarkan Slug
+// 1. MENGAMBIL DATA BERDASARKAN SLUG SAJA
 async function getStory(slug: string) {
-  const res = await fetch(`https://backend-back2eras.vercel.app//api/stories/${slug}`, {
-    // Revalidasi setiap 60 detik (ISR) agar artikel update tanpa harus build ulang
+  // CATATAN: Pastikan URL backend Anda benar, gunakan satu garis miring (/)
+  // Ganti URL localhost ini dengan URL Vercel backend Anda jika sudah di-deploy
+  const res = await fetch(`https://backend-back2eras.vercel.app/api/stories/${slug}`, {
     next: { revalidate: 60 } 
   });
   
@@ -298,20 +298,14 @@ async function getStory(slug: string) {
   return res.json();
 }
 
-export async function generateStaticParams() {
-  try {
-    const res = await fetch("https://backend-back2eras.vercel.app//api/stories");
-    const stories = await res.json();
-    return stories.map((story: { slug: string }) => ({ slug: story.slug }));
-  } catch (error) {
-    return [];
-  }
-}
+// 2. FUNGSI 'generateStaticParams' TELAH DIHAPUS
+// Next.js akan secara otomatis menangani URL ini secara dinamis.
 
 export default async function StoryDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const story = await getStory(slug);
 
+  // Jika slug tidak ditemukan di database
   if (!story) {
     return (
       <div className="min-h-screen bg-black flex flex-col items-center justify-center text-center px-6">
@@ -331,7 +325,7 @@ export default async function StoryDetailPage({ params }: { params: Promise<{ sl
   return (
     <div className="bg-[#000000] min-h-screen text-[#eaddce] font-roboto pb-24">
       
-      {/* 3. HERO IMAGE & TITLE */}
+      {/* HERO IMAGE & TITLE */}
       <section className="relative w-full h-[50vh] min-h-[400px] lg:h-[60vh]">
         <img 
           src={story.image_path} 
@@ -352,7 +346,7 @@ export default async function StoryDetailPage({ params }: { params: Promise<{ sl
         </div>
       </section>
 
-      {/* 4. CONTENT AREA */}
+      {/* CONTENT AREA */}
       <section className="max-w-4xl mx-auto px-6 md:px-12 mt-12">
         
         <Link 

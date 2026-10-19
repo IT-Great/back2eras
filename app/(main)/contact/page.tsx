@@ -146,7 +146,7 @@ export default function ContactUs() {
   //   };
 
   //   try {
-  //     const response = await fetch("https://backend-back2eras.vercel.app//api/contact", {
+  //     const response = await fetch("https://backend-back2eras.vercel.app/api/contact", {
   //       method: "POST",
   //       headers: {
   //         "Content-Type": "application/json",
@@ -184,7 +184,7 @@ export default function ContactUs() {
     };
 
     try {
-      const response = await fetch('https://backend-back2eras.vercel.app//api/contact', {
+      const response = await fetch('https://backend-back2eras.vercel.app/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

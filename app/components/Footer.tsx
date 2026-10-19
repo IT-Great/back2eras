@@ -358,7 +358,7 @@ export default function Footer() {
     const emailInput = form.elements.namedItem('email') as HTMLInputElement;
 
     try {
-      const response = await fetch('https://backend-back2eras.vercel.app//api/subscribe', {
+      const response = await fetch('https://backend-back2eras.vercel.app/api/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

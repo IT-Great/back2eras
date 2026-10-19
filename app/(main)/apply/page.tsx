@@ -400,7 +400,7 @@ export default function ApplyPage() {
 
   // FETCH DATA KATEGORI
   useEffect(() => {
-    fetch("https://backend-back2eras.vercel.app//api/vendor-categories")
+    fetch("https://backend-back2eras.vercel.app/api/vendor-categories")
       .then(res => res.json())
       .then(data => setVendorCategories(data));
   }, []);
@@ -447,7 +447,7 @@ export default function ApplyPage() {
       if (result.isConfirmed) {
         const appId = appliedCategories[category];
         try {
-          await fetch(`https://backend-back2eras.vercel.app//api/applications/${appId}`, {
+          await fetch(`https://backend-back2eras.vercel.app/api/applications/${appId}`, {
             method: "DELETE",
           });
 
@@ -521,7 +521,7 @@ export default function ApplyPage() {
 
     if (formValues) {
       try {
-        const res = await fetch("https://backend-back2eras.vercel.app//api/applications", {
+        const res = await fetch("https://backend-back2eras.vercel.app/api/applications", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
