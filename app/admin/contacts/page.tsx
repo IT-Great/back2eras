@@ -19,7 +19,7 @@ export default function ManageContacts() {
 
   const fetchMessages = async () => {
     try {
-      const res = await fetch("https://backend-back2eras.vercel.app/api/contacts", {
+      const res = await fetch("https://backend-back2eras.vercel.app/api/api/contacts", {
         headers: { "Accept": "application/json" }
       });
       const data = await res.json();
@@ -76,7 +76,7 @@ export default function ManageContacts() {
 
     if (res.isConfirmed) {
       try {
-        await fetch(`https://backend-back2eras.vercel.app/api/contacts/${id}`, {
+        await fetch(`https://backend-back2eras.vercel.app/api/api/contacts/${id}`, {
           method: "DELETE",
           headers: { "Accept": "application/json" }
         });
