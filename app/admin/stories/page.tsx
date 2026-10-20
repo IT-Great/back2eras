@@ -202,7 +202,10 @@ export default function ManageStories() {
 
   const fetchStories = async () => {
     try {
-      const res = await fetch("https://backend-back2eras.vercel.app/api/api/stories");
+      // PERBAIKAN 1: Hapus dobel /api/api menjadi /api/ saja
+      const res = await fetch("https://backend-back2eras.vercel.app/api/api/stories", {
+        headers: { "Accept": "application/json" }
+      });
       const data = await res.json();
       setStories(data);
     } catch (error) {
@@ -278,7 +281,6 @@ export default function ManageStories() {
         if (file) data.append("image_file", file);
         else data.append("image_path", imagePath);
 
-        // Trik Update Laravel dengan file
         if (story) data.append("_method", "PUT");
 
         return data;
@@ -286,11 +288,16 @@ export default function ManageStories() {
     });
 
     if (formData) {
-      const url = story ? `https://backend-back2eras.vercel.app/api/api/stories/${story.id}` : "https://backend-back2eras.vercel.app/api/api/stories";
+      // PERBAIKAN 1: Hapus dobel /api/api
+      const url = story ? `https://backend-back2eras.vercel.app/api/api/stories/${story.id}` : "https://backend-back2eras.vercel.app/api/stories";
       
       try {
         const res = await fetch(url, {
-          method: "POST", // POST dipakai walau update (FormData requirements)
+          method: "POST", 
+          headers: { 
+            // PERBAIKAN 2: Wajib beri tahu Laravel bahwa ini API, agar merespon error JSON, bukan redirect.
+            "Accept": "application/json" 
+          },
           body: formData
         });
 
@@ -298,7 +305,10 @@ export default function ManageStories() {
           Swal.fire("Saved!", "Story has been saved successfully.", "success");
           fetchStories();
         } else {
-          Swal.fire("Error!", "Failed to save story. Check your data.", "error");
+          // Menangkap dan menampilkan pesan error asli dari Laravel
+          const errorData = await res.json();
+          console.error("Validation Error:", errorData);
+          Swal.fire("Error!", errorData.message || "Failed to save story. Check your data.", "error");
         }
       } catch (error) {
         Swal.fire("Error!", "Server connection failed.", "error");
@@ -310,7 +320,10 @@ export default function ManageStories() {
     const res = await Swal.fire({ title: "Delete Story?", text: "This action cannot be undone.", icon: "warning", showCancelButton: true, confirmButtonColor: "#ff1493", cancelButtonColor: "#13bbad", confirmButtonText: "Yes, delete it!" });
     if (res.isConfirmed) {
       try {
-        await fetch(`https://backend-back2eras.vercel.app/api/api/stories/${id}`, { method: "DELETE" });
+        await fetch(`https://backend-back2eras.vercel.app/api/api/stories/${id}`, { 
+          method: "DELETE",
+          headers: { "Accept": "application/json" }
+        });
         Swal.fire("Deleted!", "Story has been deleted.", "success");
         fetchStories();
       } catch (error) {
