@@ -9,6 +9,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const pathname = usePathname();
 
   const adminLinks = [
+    { name: "Visitors", path: "/admin/visitors", icon: "🎟️" },
     { name: "Applications", path: "/admin/apply", icon: "📋" },
     { name: "Vendor Categories", path: "/admin/categories", icon: "📁" },
     { name: "Stories", path: "/admin/stories", icon: "📰" },
