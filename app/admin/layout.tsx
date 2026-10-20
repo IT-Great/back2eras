@@ -12,6 +12,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { name: "Applications", path: "/admin/apply", icon: "📋" },
     { name: "Vendor Categories", path: "/admin/categories", icon: "📁" },
     { name: "Stories", path: "/admin/stories", icon: "📰" },
+    { name: "Messages", path: "/admin/contacts", icon: "✉️" },
   ];
 
   return (
