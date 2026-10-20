@@ -471,7 +471,7 @@ export default function ManageCategories() {
   const fetchCategories = async () => {
     try {
       // PERBAIKAN: Menghapus double api/api menjadi api/ saja
-      const res = await fetch("https://backend-back2eras.vercel.app/api/vendor-categories", {
+      const res = await fetch("https://backend-back2eras.vercel.app/api/api/vendor-categories", {
         headers: { "Accept": "application/json" }
       });
       const data = await res.json();
@@ -538,7 +538,7 @@ export default function ManageCategories() {
     });
 
     if (formData) {
-      const url = cat ? `https://backend-back2eras.vercel.app/api/vendor-categories/${cat.id}` : "https://backend-back2eras.vercel.app/api/vendor-categories";
+      const url = cat ? `https://backend-back2eras.vercel.app/api/api/vendor-categories/${cat.id}` : "https://backend-back2eras.vercel.app/api/api/vendor-categories";
       
       try {
         const res = await fetch(url, {
@@ -564,7 +564,7 @@ export default function ManageCategories() {
     const res = await Swal.fire({ title: "Delete Category?", text: "This cannot be undone.", icon: "warning", showCancelButton: true, confirmButtonColor: "#ff1493", cancelButtonColor: "#13bbad", confirmButtonText: "Yes, delete it" });
     if (res.isConfirmed) {
       try {
-        await fetch(`https://backend-back2eras.vercel.app/api/vendor-categories/${id}`, { 
+        await fetch(`https://backend-back2eras.vercel.app/api/api/vendor-categories/${id}`, { 
           method: "DELETE",
           headers: { "Accept": "application/json" } 
         });
