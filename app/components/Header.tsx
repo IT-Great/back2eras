@@ -451,7 +451,7 @@ export default function Header() {
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
     { name: "Stories", path: "/stories" },
-    { name: "Apply for The Event", path: "/apply" },
+    // { name: "Apply for The Event", path: "/apply" },
     { name: "Visitor Registration", path: "/register" },
     { name: "Tenant Registration", path: "/tenants" },
     { name: "Sponsorship & Partnership", path: "/partners" },
