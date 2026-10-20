@@ -289,7 +289,7 @@ export default function ManageStories() {
 
     if (formData) {
       // PERBAIKAN 1: Hapus dobel /api/api
-      const url = story ? `https://backend-back2eras.vercel.app/api/api/stories/${story.id}` : "https://backend-back2eras.vercel.app/api/stories";
+      const url = story ? `https://backend-back2eras.vercel.app/api/api/stories/${story.id}` : "https://backend-back2eras.vercel.app/api/api/stories";
       
       try {
         const res = await fetch(url, {
