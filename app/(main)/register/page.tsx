@@ -5,39 +5,106 @@ import Link from "next/link";
 import Swal from "sweetalert2";
 
 export default function RegisterPage() {
-  const handleRegister = (e: FormEvent<HTMLFormElement>) => {
+  // const handleRegister = (e: FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   const form = e.currentTarget;
+
+  //   // Menampilkan pesan Post-submission konfirmasi sesuai arahan dengan gaya 80s
+  //   Swal.fire({
+  //     title: "YOU'RE ON THE LIST!",
+  //     html: `
+  //       <div class="text-left text-[#eaddce] font-roboto flex flex-col gap-3">
+  //         <p>Welcome to BACK2ERAS. Your free visitor registration has been received.</p>
+  //         <ul class="list-disc pl-5 text-[#0fdff8]">
+  //           <li><span class="text-white">Date:</span> 27 Nov - 1 Dec 2026</li>
+  //           <li><span class="text-white">Venue:</span> Jl. Raya Darmo Permai III, Surabaya</li>
+  //         </ul>
+  //         <p>Keep your confirmation handy for check-in.</p>
+  //         <div class="bg-black/50 border border-[#fadf29] p-3 rounded mt-2">
+  //           <p class="text-[#fadf29] text-sm italic">
+  //             <strong>Want the goodie bag?</strong> The first 50 eligible pre-registered visitors who check in receive one, while supplies last.
+  //           </p>
+  //         </div>
+  //         <p class="font-anton text-xl text-[#ff1493] mt-2">SEE YOU THERE!</p>
+  //       </div>
+  //     `,
+  //     icon: "success",
+  //     background: "#144333",
+  //     color: "#0fdff8",
+  //     confirmButtonColor: "#ff1493",
+  //     confirmButtonText: "Awesome!",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       form.reset();
+  //     }
+  //   });
+  // };
+
+  const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
 
-    // Menampilkan pesan Post-submission konfirmasi sesuai arahan dengan gaya 80s
-    Swal.fire({
-      title: "YOU'RE ON THE LIST!",
-      html: `
-        <div class="text-left text-[#eaddce] font-roboto flex flex-col gap-3">
-          <p>Welcome to BACK2ERAS. Your free visitor registration has been received.</p>
-          <ul class="list-disc pl-5 text-[#0fdff8]">
-            <li><span class="text-white">Date:</span> 27 Nov - 1 Dec 2026</li>
-            <li><span class="text-white">Venue:</span> Jl. Raya Darmo Permai III, Surabaya</li>
-          </ul>
-          <p>Keep your confirmation handy for check-in.</p>
-          <div class="bg-black/50 border border-[#fadf29] p-3 rounded mt-2">
-            <p class="text-[#fadf29] text-sm italic">
-              <strong>Want the goodie bag?</strong> The first 50 eligible pre-registered visitors who check in receive one, while supplies last.
-            </p>
-          </div>
-          <p class="font-anton text-xl text-[#ff1493] mt-2">SEE YOU THERE!</p>
-        </div>
-      `,
-      icon: "success",
-      background: "#144333",
-      color: "#0fdff8",
-      confirmButtonColor: "#ff1493",
-      confirmButtonText: "Awesome!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        form.reset();
+    // 1. Ambil data dari form
+    const formData = {
+      full_name: (form.elements.namedItem('fullName') as HTMLInputElement).value,
+      email: (form.elements.namedItem('email') as HTMLInputElement).value,
+      whatsapp: (form.elements.namedItem('whatsapp') as HTMLInputElement).value,
+      instagram: (form.elements.namedItem('instagram') as HTMLInputElement).value,
+      // Mengambil status centang (checked) dari checkbox opsional
+      subscribe_newsletter: (form.elements[4] as HTMLInputElement).checked // pastikan ini menunjuk ke checkbox newsletter
+    };
+
+    try {
+      // 2. Kirim data ke API Laravel Vercel
+      const response = await fetch('https://backend-back2eras.vercel.app/api/api/visitors', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // 3. Tampilkan pesan sukses JIKA berhasil tersimpan di DB
+        Swal.fire({
+          title: "YOU'RE ON THE LIST!",
+          html: `
+            <div class="text-left text-[#eaddce] font-roboto flex flex-col gap-3">
+              <p>Welcome to BACK2ERAS, <strong>${formData.full_name.split(' ')[0]}</strong>! Your free visitor registration has been received.</p>
+              <ul class="list-disc pl-5 text-[#0fdff8]">
+                <li><span class="text-white">Date:</span> 27 Nov - 1 Dec 2026</li>
+                <li><span class="text-white">Venue:</span> Jl. Raya Darmo Permai III, Surabaya</li>
+              </ul>
+              <p>Keep your confirmation handy for check-in.</p>
+              <div class="bg-black/50 border border-[#fadf29] p-3 rounded mt-2">
+                <p class="text-[#fadf29] text-sm italic">
+                  <strong>Want the goodie bag?</strong> The first 50 eligible pre-registered visitors who check in receive one, while supplies last.
+                </p>
+              </div>
+              <p class="font-anton text-xl text-[#ff1493] mt-2">SEE YOU THERE!</p>
+            </div>
+          `,
+          icon: "success",
+          background: "#144333",
+          color: "#0fdff8",
+          confirmButtonColor: "#ff1493",
+          confirmButtonText: "Awesome!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            form.reset();
+          }
+        });
+      } else {
+        // Menampilkan pesan error dari validasi Laravel
+        Swal.fire("Registration Failed!", data.message || "Please check your input.", "error");
       }
-    });
+    } catch (error) {
+      console.error("Terjadi kesalahan:", error);
+      Swal.fire("Connection Error", "Gagal terhubung ke server. Silakan coba lagi.", "error");
+    }
   };
 
   return (
