@@ -227,7 +227,7 @@ export default function ManageContacts() {
         }
 
         try {
-          const response = await fetch(`https://backend-back2eras.vercel.app/api/contacts/${msg.id}/reply`, {
+          const response = await fetch(`https://backend-back2eras.vercel.app/api/api/contacts/${msg.id}/reply`, {
             method: 'POST',
             headers: { 
               'Content-Type': 'application/json',
@@ -273,7 +273,7 @@ export default function ManageContacts() {
 
     if (res.isConfirmed) {
       try {
-        await fetch(`https://backend-back2eras.vercel.app/api/contacts/${id}`, {
+        await fetch(`https://backend-back2eras.vercel.app/api/api/contacts/${id}`, {
           method: "DELETE",
           headers: { "Accept": "application/json" }
         });
