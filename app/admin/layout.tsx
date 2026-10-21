@@ -8,8 +8,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const pathname = usePathname();
 
+  // const adminLinks = [
+  //   { name: "Visitors", path: "/admin/visitors", icon: "🎟️" },
+  //   { name: "Applications", path: "/admin/apply", icon: "📋" },
+  //   { name: "Vendor Categories", path: "/admin/categories", icon: "📁" },
+  //   { name: "Stories", path: "/admin/stories", icon: "📰" },
+  //   { name: "Messages", path: "/admin/contacts", icon: "✉️" },
+  // ];
+
   const adminLinks = [
     { name: "Visitors", path: "/admin/visitors", icon: "🎟️" },
+    { name: "Tenants", path: "/admin/tenants", icon: "🏪" }, // <-- TAMBAHKAN BARIS INI
     { name: "Applications", path: "/admin/apply", icon: "📋" },
     { name: "Vendor Categories", path: "/admin/categories", icon: "📁" },
     { name: "Stories", path: "/admin/stories", icon: "📰" },
