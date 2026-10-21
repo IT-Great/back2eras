@@ -4,29 +4,85 @@ import { FormEvent } from "react";
 import Swal from "sweetalert2";
 
 export default function MediaPartnershipPage() {
-  const handleApply = (e: FormEvent<HTMLFormElement>) => {
+  // const handleApply = (e: FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   const form = e.currentTarget;
+
+  //   // Post-submission confirmation message
+  //   Swal.fire({
+  //     title: "APPLICATION RECEIVED!",
+  //     html: `
+  //       <div class="text-left text-[#eaddce] font-roboto flex flex-col gap-3">
+  //         <p>Thank you for your interest in covering BACK2ERAS.</p>
+  //         <p>Your media partnership application has been received. Our team will review your proposal and follow up with next steps.</p>
+  //       </div>
+  //     `,
+  //     icon: "success",
+  //     background: "#144333",
+  //     color: "#0fdff8",
+  //     confirmButtonColor: "#ff1493",
+  //     confirmButtonText: "Got it!",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       form.reset();
+  //     }
+  //   });
+  // };
+
+  const handleApply = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
 
-    // Post-submission confirmation message
-    Swal.fire({
-      title: "APPLICATION RECEIVED!",
-      html: `
-        <div class="text-left text-[#eaddce] font-roboto flex flex-col gap-3">
-          <p>Thank you for your interest in covering BACK2ERAS.</p>
-          <p>Your media partnership application has been received. Our team will review your proposal and follow up with next steps.</p>
-        </div>
-      `,
-      icon: "success",
-      background: "#144333",
-      color: "#0fdff8",
-      confirmButtonColor: "#ff1493",
-      confirmButtonText: "Got it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        form.reset();
+    const formData = {
+      media_name: (form.elements.namedItem('mediaName') as HTMLInputElement).value,
+      contact_person: (form.elements.namedItem('contactPerson') as HTMLInputElement).value,
+      email: (form.elements.namedItem('mediaEmail') as HTMLInputElement).value,
+      whatsapp: (form.elements.namedItem('mediaWhatsapp') as HTMLInputElement).value,
+      social_links: (form.elements.namedItem('socialLinks') as HTMLInputElement).value,
+      media_category: (form.elements.namedItem('mediaCategory') as HTMLSelectElement).value,
+      audience_size: (form.elements.namedItem('audienceSize') as HTMLInputElement).value || null,
+      media_kit: (form.elements.namedItem('mediaKit') as HTMLInputElement).value,
+      coverage_format: (form.elements.namedItem('coverageFormat') as HTMLTextAreaElement).value,
+    };
+
+    try {
+      const response = await fetch('https://backend-back2eras.vercel.app/api/api/media', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        Swal.fire({
+          title: "APPLICATION RECEIVED!",
+          html: `
+            <div class="text-left text-[#eaddce] font-roboto flex flex-col gap-3">
+              <p>Thank you for your interest in covering BACK2ERAS.</p>
+              <p>Your media partnership application for <strong>${formData.media_name}</strong> has been received. Our team will review your proposal and follow up with next steps.</p>
+            </div>
+          `,
+          icon: "success",
+          background: "#144333",
+          color: "#0fdff8",
+          confirmButtonColor: "#ff1493",
+          confirmButtonText: "Got it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            form.reset();
+          }
+        });
+      } else {
+        Swal.fire("Failed!", data.message || "Please check your inputs.", "error");
       }
-    });
+    } catch (error) {
+      console.error("Terjadi kesalahan:", error);
+      Swal.fire("Connection Error", "Gagal terhubung ke server.", "error");
+    }
   };
 
   return (
