@@ -592,7 +592,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const handleLogout = async () => {
     const token = localStorage.getItem("admin_token");
     if (token) {
-      await fetch("https://backend-back2eras.vercel.app/api/logout", {
+      await fetch("https://backend-back2eras.vercel.app/api/api/logout", {
         method: "POST",
         headers: { "Accept": "application/json", "Authorization": `Bearer ${token}` }
       });
