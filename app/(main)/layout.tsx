@@ -94,6 +94,7 @@
 
 import Navbar from "../components/Header"; // Sesuaikan path jika folder components Anda berbeda
 import Footer from "../components/Footer";
+import FloatingWA from "../components/FloatingWA";
 
 export default function MainLayout({
   children,
@@ -107,6 +108,7 @@ export default function MainLayout({
         {children}
       </main>
       <Footer />
+      <FloatingWA />
     </div>
   );
 }
