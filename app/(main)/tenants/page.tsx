@@ -240,29 +240,86 @@ import { FormEvent } from "react";
 import Swal from "sweetalert2";
 
 export default function TenantRegistrationPage() {
-  const handleApply = (e: FormEvent<HTMLFormElement>) => {
+  // const handleApply = (e: FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   const form = e.currentTarget;
+
+  //   // Post-submission confirmation message
+  //   Swal.fire({
+  //     title: "APPLICATION RECEIVED!",
+  //     html: `
+  //       <div class="text-left text-[#eaddce] font-roboto flex flex-col gap-3">
+  //         <p>Thanks for applying to BACK2ERAS! We’ve received your tenant application.</p>
+  //         <p>Our team will review your submission and contact shortlisted brands with next steps.</p>
+  //       </div>
+  //     `,
+  //     icon: "success",
+  //     background: "#144333",
+  //     color: "#fadf29",
+  //     confirmButtonColor: "#0fdff8",
+  //     confirmButtonText: "Got it!",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       form.reset();
+  //     }
+  //   });
+  // };
+
+  const handleApply = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
 
-    // Post-submission confirmation message
-    Swal.fire({
-      title: "APPLICATION RECEIVED!",
-      html: `
-        <div class="text-left text-[#eaddce] font-roboto flex flex-col gap-3">
-          <p>Thanks for applying to BACK2ERAS! We’ve received your tenant application.</p>
-          <p>Our team will review your submission and contact shortlisted brands with next steps.</p>
-        </div>
-      `,
-      icon: "success",
-      background: "#144333",
-      color: "#fadf29",
-      confirmButtonColor: "#0fdff8",
-      confirmButtonText: "Got it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        form.reset();
+    const formData = {
+      brand_name: (form.elements.namedItem('brandName') as HTMLInputElement).value,
+      contact_person: (form.elements.namedItem('contactPerson') as HTMLInputElement).value,
+      email: (form.elements.namedItem('tenantEmail') as HTMLInputElement).value,
+      whatsapp: (form.elements.namedItem('tenantWhatsapp') as HTMLInputElement).value,
+      social_link: (form.elements.namedItem('socialLink') as HTMLInputElement).value,
+      category: (form.elements.namedItem('category') as HTMLSelectElement).value,
+      photo_link: (form.elements.namedItem('photoLink') as HTMLInputElement).value,
+      description: (form.elements.namedItem('description') as HTMLTextAreaElement).value,
+      booth_size: (form.elements.namedItem('boothSize') as HTMLInputElement).value,
+      special_req: (form.elements.namedItem('specialReq') as HTMLInputElement).value || null,
+    };
+
+    try {
+      const response = await fetch('https://backend-back2eras.vercel.app/api/api/tenants', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        Swal.fire({
+          title: "APPLICATION RECEIVED!",
+          html: `
+            <div class="text-left text-[#eaddce] font-roboto flex flex-col gap-3">
+              <p>Thanks for applying to BACK2ERAS! We’ve received your application for <strong>${formData.brand_name}</strong>.</p>
+              <p>Our team will review your submission and contact you via email or WhatsApp regarding the next steps.</p>
+            </div>
+          `,
+          icon: "success",
+          background: "#144333",
+          color: "#fadf29",
+          confirmButtonColor: "#0fdff8",
+          confirmButtonText: "Got it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            form.reset();
+          }
+        });
+      } else {
+        Swal.fire("Failed!", data.message || "Please check your inputs.", "error");
       }
-    });
+    } catch (error) {
+      console.error("Terjadi kesalahan:", error);
+      Swal.fire("Connection Error", "Gagal terhubung ke server.", "error");
+    }
   };
 
   return (
