@@ -4,29 +4,86 @@ import { FormEvent } from "react";
 import Swal from "sweetalert2";
 
 export default function PartnershipPage() {
-  const handleApply = (e: FormEvent<HTMLFormElement>) => {
+  // const handleApply = (e: FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   const form = e.currentTarget;
+
+  //   // Post-submission confirmation message sesuai arahan
+  //   Swal.fire({
+  //     title: "INQUIRY RECEIVED!",
+  //     html: `
+  //       <div class="text-left text-[#eaddce] font-roboto flex flex-col gap-3">
+  //         <p>Thank you for your interest in partnering with BACK2ERAS.</p>
+  //         <p>We’ve received your inquiry and will review the proposed collaboration before getting in touch.</p>
+  //       </div>
+  //     `,
+  //     icon: "success",
+  //     background: "#144333",
+  //     color: "#0fdff8",
+  //     confirmButtonColor: "#ff1493",
+  //     confirmButtonText: "Awesome!",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       form.reset();
+  //     }
+  //   });
+  // };
+
+  const handleApply = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
 
-    // Post-submission confirmation message sesuai arahan
-    Swal.fire({
-      title: "INQUIRY RECEIVED!",
-      html: `
-        <div class="text-left text-[#eaddce] font-roboto flex flex-col gap-3">
-          <p>Thank you for your interest in partnering with BACK2ERAS.</p>
-          <p>We’ve received your inquiry and will review the proposed collaboration before getting in touch.</p>
-        </div>
-      `,
-      icon: "success",
-      background: "#144333",
-      color: "#0fdff8",
-      confirmButtonColor: "#ff1493",
-      confirmButtonText: "Awesome!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        form.reset();
+    // Mengambil data dari form sesuai dengan id/name input
+    const formData = {
+      company_name: (form.elements.namedItem('companyName') as HTMLInputElement).value,
+      contact_person: (form.elements.namedItem('contactPerson') as HTMLInputElement).value,
+      email: (form.elements.namedItem('partnerEmail') as HTMLInputElement).value,
+      whatsapp: (form.elements.namedItem('partnerWhatsapp') as HTMLInputElement).value,
+      social_link: (form.elements.namedItem('socials') as HTMLInputElement).value,
+      interest: (form.elements.namedItem('interest') as HTMLSelectElement).value,
+      idea: (form.elements.namedItem('idea') as HTMLTextAreaElement).value,
+      budget: (form.elements.namedItem('budget') as HTMLInputElement).value || null,
+      deck_link: (form.elements.namedItem('deckLink') as HTMLInputElement).value || null,
+    };
+
+    try {
+      const response = await fetch('https://backend-back2eras.vercel.app/api/api/partners', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        Swal.fire({
+          title: "INQUIRY RECEIVED!",
+          html: `
+            <div class="text-left text-[#eaddce] font-roboto flex flex-col gap-3">
+              <p>Thank you for your interest in partnering with BACK2ERAS.</p>
+              <p>We’ve received your inquiry for <strong>${formData.company_name}</strong> and will review the proposed collaboration before getting in touch.</p>
+            </div>
+          `,
+          icon: "success",
+          background: "#144333",
+          color: "#0fdff8",
+          confirmButtonColor: "#ff1493",
+          confirmButtonText: "Awesome!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            form.reset();
+          }
+        });
+      } else {
+        Swal.fire("Failed!", data.message || "Please check your inputs.", "error");
       }
-    });
+    } catch (error) {
+      console.error("Terjadi kesalahan:", error);
+      Swal.fire("Connection Error", "Gagal terhubung ke server.", "error");
+    }
   };
 
   return (
