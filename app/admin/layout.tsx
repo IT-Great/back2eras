@@ -604,7 +604,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     router.push("/login");
   };
 
+  // const adminLinks = [
+  //   { name: "Visitors", path: "/admin/visitors", icon: "🎟️" },
+  //   { name: "Tenants", path: "/admin/tenants", icon: "🏪" },
+  //   { name: "Partners", path: "/admin/partners", icon: "🤝" },
+  //   { name: "Media", path: "/admin/media", icon: "📸" },
+  //   { name: "Vendor Categories", path: "/admin/categories", icon: "📁" },
+  //   { name: "Stories", path: "/admin/stories", icon: "📰" },
+  //   { name: "Messages", path: "/admin/contacts", icon: "✉️" },
+  //   { name: "My Profile", path: "/admin/profile", icon: "⚙️" },
+  // ];
+
   const adminLinks = [
+    { name: "Dashboard", path: "/admin/dashboard", icon: "📊" }, // <-- TAMBAHKAN INI DI ATAS
     { name: "Visitors", path: "/admin/visitors", icon: "🎟️" },
     { name: "Tenants", path: "/admin/tenants", icon: "🏪" },
     { name: "Partners", path: "/admin/partners", icon: "🤝" },
