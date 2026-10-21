@@ -16,9 +16,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   //   { name: "Messages", path: "/admin/contacts", icon: "✉️" },
   // ];
 
+  // const adminLinks = [
+  //   { name: "Visitors", path: "/admin/visitors", icon: "🎟️" },
+  //   { name: "Tenants", path: "/admin/tenants", icon: "🏪" }, // <-- TAMBAHKAN BARIS INI
+  //   { name: "Applications", path: "/admin/apply", icon: "📋" },
+  //   { name: "Vendor Categories", path: "/admin/categories", icon: "📁" },
+  //   { name: "Stories", path: "/admin/stories", icon: "📰" },
+  //   { name: "Messages", path: "/admin/contacts", icon: "✉️" },
+  // ];
+
   const adminLinks = [
     { name: "Visitors", path: "/admin/visitors", icon: "🎟️" },
-    { name: "Tenants", path: "/admin/tenants", icon: "🏪" }, // <-- TAMBAHKAN BARIS INI
+    { name: "Tenants", path: "/admin/tenants", icon: "🏪" },
+    { name: "Partners", path: "/admin/partners", icon: "🤝" }, // <-- TAMBAHKAN BARIS INI
     { name: "Applications", path: "/admin/apply", icon: "📋" },
     { name: "Vendor Categories", path: "/admin/categories", icon: "📁" },
     { name: "Stories", path: "/admin/stories", icon: "📰" },
