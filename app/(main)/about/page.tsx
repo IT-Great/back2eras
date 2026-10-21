@@ -230,7 +230,7 @@ export default function AboutPage() {
           Ready to join the revolution?
         </h3>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Link href="/tenant" className="bg-[#fadf29] text-[#144333] font-anton text-xl tracking-wide uppercase px-8 py-3 rounded shadow-[4px_4px_0px_#0fdff8] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+          <Link href="/tenants" className="bg-[#fadf29] text-[#144333] font-anton text-xl tracking-wide uppercase px-8 py-3 rounded shadow-[4px_4px_0px_#0fdff8] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
             Become a Tenant
           </Link>
           <Link href="/contact" className="bg-black text-[#0fdff8] font-anton text-xl tracking-wide uppercase px-8 py-3 rounded shadow-[4px_4px_0px_#144333] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all border border-[#0fdff8]">
