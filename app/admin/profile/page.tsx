@@ -35,7 +35,7 @@ export default function MyProfile() {
     const token = localStorage.getItem("admin_token");
 
     try {
-      const res = await fetch("https://backend-back2eras.vercel.app/api/profile", {
+      const res = await fetch("https://backend-back2eras.vercel.app/api/api/profile", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
