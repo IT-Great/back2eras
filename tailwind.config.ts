@@ -14,6 +14,20 @@ const config: Config = {
         pacifico: ["var(--font-pacifico)", "cursive"],
         roboto: ["var(--font-roboto-condensed)", "sans-serif"],
       },
+
+      // TAMBAHKAN BAGIAN INI
+      keyframes: {
+        floatUp: {
+          '0%': { transform: 'translateY(100%)', opacity: '0' },
+          '20%': { transform: 'translateY(0)', opacity: '1' },
+          '80%': { transform: 'translateY(0)', opacity: '1' },
+          '100%': { transform: 'translateY(-100%)', opacity: '0' },
+        }
+      },
+
+      animation: {
+        floatUp: 'floatUp 4s ease-in-out infinite',
+      },
       // Anda juga bisa menambahkan palet warna brand di sini 
       // jika tidak ingin menulis kode hex berulang kali di komponen
       colors: {
