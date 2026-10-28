@@ -23,7 +23,7 @@
 //   // Mengambil data dari Backend Laravel
 //   const fetchApplications = async () => {
 //     try {
-//       const res = await fetch("https://backend-back2eras.vercel.app/api/api/applications");
+//       const res = await fetch("https://back.back2eras.com/api/applications");
 //       const data = await res.json();
 //       setApplications(data);
 //     } catch (error) {
@@ -39,14 +39,14 @@
 
 //   // Fungsi Accept
 //   const handleAccept = async (id: number) => {
-//     await fetch(`https://backend-back2eras.vercel.app/api/api/applications/${id}/accept`, { method: "PUT" });
+//     await fetch(`https://back.back2eras.com/api/applications/${id}/accept`, { method: "PUT" });
 //     Swal.fire("Approved!", "Tenant has been approved.", "success");
 //     fetchApplications(); // Refresh data
 //   };
 
 //   // Fungsi Reject
 //   const handleReject = async (id: number) => {
-//     await fetch(`https://backend-back2eras.vercel.app/api/api/applications/${id}/reject`, { method: "PUT" });
+//     await fetch(`https://back.back2eras.com/api/applications/${id}/reject`, { method: "PUT" });
 //     Swal.fire("Rejected!", "Tenant has been rejected.", "error");
 //     fetchApplications();
 //   };
@@ -64,7 +64,7 @@
 //     });
 
 //     if (result.isConfirmed) {
-//       await fetch(`https://backend-back2eras.vercel.app/api/api/applications/${id}`, { method: "DELETE" });
+//       await fetch(`https://back.back2eras.com/api/applications/${id}`, { method: "DELETE" });
 //       Swal.fire("Deleted!", "Application has been deleted.", "success");
 //       fetchApplications();
 //     }
@@ -158,7 +158,7 @@
 
 //   const fetchApplications = async () => {
 //     try {
-//       const res = await fetch("https://backend-back2eras.vercel.app/api/api/applications");
+//       const res = await fetch("https://back.back2eras.com/api/applications");
 //       const data = await res.json();
 //       setApplications(data);
 //     } catch (error) {
@@ -173,13 +173,13 @@
 //   }, []);
 
 //   const handleAccept = async (id: number) => {
-//     await fetch(`https://backend-back2eras.vercel.app/api/api/applications/${id}/accept`, { method: "PUT" });
+//     await fetch(`https://back.back2eras.com/api/applications/${id}/accept`, { method: "PUT" });
 //     Swal.fire("Approved!", "Tenant has been approved.", "success");
 //     fetchApplications(); 
 //   };
 
 //   const handleReject = async (id: number) => {
-//     await fetch(`https://backend-back2eras.vercel.app/api/api/applications/${id}/reject`, { method: "PUT" });
+//     await fetch(`https://back.back2eras.com/api/applications/${id}/reject`, { method: "PUT" });
 //     Swal.fire("Rejected!", "Tenant has been rejected.", "error");
 //     fetchApplications();
 //   };
@@ -196,7 +196,7 @@
 //     });
 
 //     if (result.isConfirmed) {
-//       await fetch(`https://backend-back2eras.vercel.app/api/api/applications/${id}`, { method: "DELETE" });
+//       await fetch(`https://back.back2eras.com/api/applications/${id}`, { method: "DELETE" });
 //       Swal.fire("Deleted!", "Application has been deleted.", "success");
 //       fetchApplications();
 //     }
@@ -281,7 +281,7 @@ export default function AdminDashboard() {
 
   const fetchApplications = async () => {
     try {
-      const res = await fetch("https://backend-back2eras.vercel.app/api/api/applications");
+      const res = await fetch("https://back.back2eras.com/api/applications");
       const data = await res.json();
       setApplications(data);
     } catch (error) {
@@ -296,13 +296,13 @@ export default function AdminDashboard() {
   }, []);
 
   const handleAccept = async (id: number) => {
-    await fetch(`https://backend-back2eras.vercel.app/api/api/applications/${id}/accept`, { method: "PUT" });
+    await fetch(`https://back.back2eras.com/api/applications/${id}/accept`, { method: "PUT" });
     Swal.fire("Approved!", "Tenant has been approved.", "success");
     fetchApplications(); 
   };
 
   const handleReject = async (id: number) => {
-    await fetch(`https://backend-back2eras.vercel.app/api/api/applications/${id}/reject`, { method: "PUT" });
+    await fetch(`https://back.back2eras.com/api/applications/${id}/reject`, { method: "PUT" });
     Swal.fire("Rejected!", "Tenant has been rejected.", "error");
     fetchApplications();
   };
@@ -319,7 +319,7 @@ export default function AdminDashboard() {
     });
 
     if (result.isConfirmed) {
-      await fetch(`https://backend-back2eras.vercel.app/api/api/applications/${id}`, { method: "DELETE" });
+      await fetch(`https://back.back2eras.com/api/applications/${id}`, { method: "DELETE" });
       Swal.fire("Deleted!", "Application has been deleted.", "success");
       fetchApplications();
     }

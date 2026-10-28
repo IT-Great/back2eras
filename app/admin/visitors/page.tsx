@@ -20,7 +20,7 @@ export default function ManageVisitors() {
 
   const fetchVisitors = async () => {
     try {
-      const res = await fetch("https://backend-back2eras.vercel.app/api/api/visitors", {
+      const res = await fetch("https://back.back2eras.com/api/visitors", {
         headers: { "Accept": "application/json" }
       });
       const data = await res.json();
@@ -49,7 +49,7 @@ export default function ManageVisitors() {
 
     if (res.isConfirmed) {
       try {
-        await fetch(`https://backend-back2eras.vercel.app/api/api/visitors/${id}`, {
+        await fetch(`https://back.back2eras.com/api/visitors/${id}`, {
           method: "DELETE",
           headers: { "Accept": "application/json" }
         });

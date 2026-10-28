@@ -56,7 +56,7 @@ export default function RegisterPage() {
 
     try {
       // 2. Kirim data ke API Laravel Vercel
-      const response = await fetch('https://backend-back2eras.vercel.app/api/api/visitors', {
+      const response = await fetch('https://back.back2eras.com/api/visitors', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

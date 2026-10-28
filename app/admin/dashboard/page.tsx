@@ -21,7 +21,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch("https://backend-back2eras.vercel.app/api/api/dashboard/stats", {
+        const res = await fetch("https://back.back2eras.com/api/dashboard/stats", {
           headers: { "Accept": "application/json" }
         });
         const data = await res.json();

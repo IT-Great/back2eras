@@ -15,7 +15,7 @@ export default function AdminLogin() {
     setIsLoading(true);
 
     try {
-      const res = await fetch("https://backend-back2eras.vercel.app/api/api/login", {
+      const res = await fetch("https://back.back2eras.com/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -55,7 +55,7 @@ export default function AdminLogin() {
     if (emailInput) {
       Swal.fire({ title: 'Sending...', background: "#144333", color: "#0fdff8", allowOutsideClick: false, didOpen: () => { Swal.showLoading() } });
       try {
-        const res = await fetch("https://backend-back2eras.vercel.app/api/api/forgot-password", {
+        const res = await fetch("https://back.back2eras.com/api/forgot-password", {
           method: "POST",
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
           body: JSON.stringify({ email: emailInput }),

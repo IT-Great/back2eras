@@ -283,7 +283,7 @@ export default function TenantRegistrationPage() {
     };
 
     try {
-      const response = await fetch('https://backend-back2eras.vercel.app/api/api/tenants', {
+      const response = await fetch('https://back.back2eras.com/api/tenants', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

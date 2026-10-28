@@ -46,7 +46,7 @@ export default function MediaPartnershipPage() {
     };
 
     try {
-      const response = await fetch('https://backend-back2eras.vercel.app/api/api/media', {
+      const response = await fetch('https://back.back2eras.com/api/media', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

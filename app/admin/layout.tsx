@@ -153,7 +153,7 @@
     
 //     // Panggil API Logout (Opsional, tapi bagus untuk menghapus token di database)
 //     if (token) {
-//       await fetch("https://backend-back2eras.vercel.app/api/api/logout", {
+//       await fetch("https://back.back2eras.com/api/logout", {
 //         method: "POST",
 //         headers: {
 //           "Accept": "application/json",
@@ -592,7 +592,7 @@
 //   const handleLogout = async () => {
 //     const token = localStorage.getItem("admin_token");
 //     if (token) {
-//       await fetch("https://backend-back2eras.vercel.app/api/api/logout", {
+//       await fetch("https://back.back2eras.com/api/logout", {
 //         method: "POST",
 //         headers: { "Accept": "application/json", "Authorization": `Bearer ${token}` }
 //       });

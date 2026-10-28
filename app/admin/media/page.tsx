@@ -25,7 +25,7 @@ export default function ManageMedia() {
 
   const fetchMedias = async () => {
     try {
-      const res = await fetch("https://backend-back2eras.vercel.app/api/api/media", {
+      const res = await fetch("https://back.back2eras.com/api/media", {
         headers: { "Accept": "application/json" }
       });
       const data = await res.json();
@@ -60,7 +60,7 @@ export default function ManageMedia() {
 
     if (newStatus && newStatus !== currentStatus) {
       try {
-        await fetch(`https://backend-back2eras.vercel.app/api/api/media/${id}/status`, {
+        await fetch(`https://back.back2eras.com/api/media/${id}/status`, {
           method: "PUT",
           headers: { 
             "Content-Type": "application/json",
@@ -116,7 +116,7 @@ export default function ManageMedia() {
 
     if (res.isConfirmed) {
       try {
-        await fetch(`https://backend-back2eras.vercel.app/api/api/media/${id}`, {
+        await fetch(`https://back.back2eras.com/api/media/${id}`, {
           method: "DELETE",
           headers: { "Accept": "application/json" }
         });

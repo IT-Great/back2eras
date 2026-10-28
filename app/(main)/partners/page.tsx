@@ -47,7 +47,7 @@ export default function PartnershipPage() {
     };
 
     try {
-      const response = await fetch('https://backend-back2eras.vercel.app/api/api/partners', {
+      const response = await fetch('https://back.back2eras.com/api/partners', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

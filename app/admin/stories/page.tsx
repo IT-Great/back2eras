@@ -22,7 +22,7 @@
 
 //   const fetchStories = async () => {
 //     try {
-//       const res = await fetch("https://backend-back2eras.vercel.app/api/api/stories");
+//       const res = await fetch("https://back.back2eras.com/api/stories");
 //       const data = await res.json();
 //       setStories(data);
 //     } catch (error) {
@@ -83,7 +83,7 @@
 //     });
 
 //     if (formValues) {
-//       const url = story ? `https://backend-back2eras.vercel.app/api/api/stories/${story.id}` : "https://backend-back2eras.vercel.app/api/api/stories";
+//       const url = story ? `https://back.back2eras.com/api/stories/${story.id}` : "https://back.back2eras.com/api/stories";
 //       const method = story ? "PUT" : "POST";
       
 //       try {
@@ -118,7 +118,7 @@
     
 //     if (res.isConfirmed) {
 //       try {
-//         await fetch(`https://backend-back2eras.vercel.app/api/api/stories/${id}`, { method: "DELETE" });
+//         await fetch(`https://back.back2eras.com/api/stories/${id}`, { method: "DELETE" });
 //         Swal.fire("Deleted!", "Story has been deleted.", "success");
 //         fetchStories();
 //       } catch (error) {
@@ -205,7 +205,7 @@ export default function ManageStories() {
   const fetchStories = async () => {
     try {
       // PERBAIKAN 1: Hapus dobel /api/api menjadi /api/ saja
-      const res = await fetch("https://backend-back2eras.vercel.app/api/api/stories", {
+      const res = await fetch("https://back.back2eras.com/api/stories", {
         headers: { "Accept": "application/json" }
       });
       const data = await res.json();
@@ -291,7 +291,7 @@ export default function ManageStories() {
 
     if (formData) {
       // PERBAIKAN 1: Hapus dobel /api/api
-      const url = story ? `https://backend-back2eras.vercel.app/api/api/stories/${story.id}` : "https://backend-back2eras.vercel.app/api/api/stories";
+      const url = story ? `https://back.back2eras.com/api/stories/${story.id}` : "https://back.back2eras.com/api/stories";
       
       try {
         const res = await fetch(url, {
@@ -322,7 +322,7 @@ export default function ManageStories() {
     const res = await Swal.fire({ title: "Delete Story?", text: "This action cannot be undone.", icon: "warning", showCancelButton: true, confirmButtonColor: "#ff1493", cancelButtonColor: "#13bbad", confirmButtonText: "Yes, delete it!" });
     if (res.isConfirmed) {
       try {
-        await fetch(`https://backend-back2eras.vercel.app/api/api/stories/${id}`, { 
+        await fetch(`https://back.back2eras.com/api/stories/${id}`, { 
           method: "DELETE",
           headers: { "Accept": "application/json" }
         });

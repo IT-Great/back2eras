@@ -20,7 +20,7 @@
 
 //   const fetchMessages = async () => {
 //     try {
-//       const res = await fetch("https://backend-back2eras.vercel.app/api/api/contacts", {
+//       const res = await fetch("https://back.back2eras.com/api/contacts", {
 //         headers: { "Accept": "application/json" }
 //       });
 //       const data = await res.json();
@@ -77,7 +77,7 @@
 
 //     if (res.isConfirmed) {
 //       try {
-//         await fetch(`https://backend-back2eras.vercel.app/api/api/contacts/${id}`, {
+//         await fetch(`https://back.back2eras.com/api/contacts/${id}`, {
 //           method: "DELETE",
 //           headers: { "Accept": "application/json" }
 //         });
@@ -179,7 +179,7 @@ export default function ManageContacts() {
 
   const fetchMessages = async () => {
     try {
-      const res = await fetch("https://backend-back2eras.vercel.app/api/api/contacts", {
+      const res = await fetch("https://back.back2eras.com/api/contacts", {
         headers: { "Accept": "application/json" }
       });
       const data = await res.json();
@@ -227,7 +227,7 @@ export default function ManageContacts() {
         }
 
         try {
-          const response = await fetch(`https://backend-back2eras.vercel.app/api/api/contacts/${msg.id}/reply`, {
+          const response = await fetch(`https://back.back2eras.com/api/contacts/${msg.id}/reply`, {
             method: 'POST',
             headers: { 
               'Content-Type': 'application/json',
@@ -273,7 +273,7 @@ export default function ManageContacts() {
 
     if (res.isConfirmed) {
       try {
-        await fetch(`https://backend-back2eras.vercel.app/api/api/contacts/${id}`, {
+        await fetch(`https://back.back2eras.com/api/contacts/${id}`, {
           method: "DELETE",
           headers: { "Accept": "application/json" }
         });
