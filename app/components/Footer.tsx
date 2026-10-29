@@ -340,7 +340,7 @@ export default function Footer() {
   const menuLinks = [
     { name: "About Us", path: "/about" },
     { name: "Stories", path: "/stories" },
-    { name: "Apply for The Event", path: "/apply" },
+    // { name: "Apply for The Event", path: "/apply" },
     { name: "Contact Us", path: "/contact" },
   ];
 
@@ -451,9 +451,9 @@ export default function Footer() {
                   {link.name}
                 </Link>
               ))}
-              {/* <Link href="/privacy-policy" className="hover:text-[#0fdff8] transition-colors w-fit">
+              <Link href="/privacy-policy" className="hover:text-[#0fdff8] transition-colors w-fit">
                 Privacy Policy
-              </Link> */}
+              </Link>
               <Link href="/careers" className="hover:text-[#0fdff8] transition-colors w-fit">
                 Careers
               </Link>
