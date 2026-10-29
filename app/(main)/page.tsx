@@ -537,7 +537,7 @@ export default function Home() {
       </section>
 
       {/* 7. TICKETING INFO & 4 EXPERIENCES GRID */}
-      <section className="py-20 md:py-24 px-6 max-w-6xl mx-auto">
+      {/* <section className="py-20 md:py-24 px-6 max-w-6xl mx-auto">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="font-anton text-3xl sm:text-4xl md:text-6xl text-[#ff1493] uppercase mb-4 md:mb-6 drop-shadow-md">
             BACK2ERAS IS TICKETED DAILY
@@ -584,7 +584,7 @@ export default function Home() {
             <h4 className="font-anton text-lg md:text-xl uppercase tracking-wide text-white">CONNECTING WITH DESIGNERS</h4>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 8. OPENING HOURS & GET TICKET BUTTON */}
       <section className="pb-20 md:pb-24 pt-4 md:pt-8 px-6 flex flex-col items-center justify-center text-center">
