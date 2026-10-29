@@ -601,7 +601,7 @@ export default function Home() {
             <p className="flex flex-col sm:flex-row justify-center items-center gap-1 sm:gap-0">
               Sunday <span className="hidden sm:inline text-[#fadf29] mx-2">|</span> 
               <span className="sm:hidden text-[#fadf29]">▼</span>
-              07:00 PM – 08:00 PM
+              07:00 AM – 08:00 PM
             </p>
           </div>
         </div>
