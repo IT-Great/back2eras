@@ -585,15 +585,15 @@ export default function ApplyPage() {
                 <p className="font-roboto text-sm text-[#eaddce]/70">Vendor set-up</p>
               </div>
               <div>
-                <span className="text-[#ff1493]">Tuesday, 1 December 2026</span>
+                <span className="text-[#ff1493]">Sunday, 29 November 2026</span>
                 <p className="font-roboto text-sm text-[#eaddce]/70">Private Media, VIP & Community Preview</p>
               </div>
               <div>
-                <span className="text-[#ff1493]">Friday – Sunday | 8:00 AM – 9:00 PM</span>
+                <span className="text-[#ff1493]">Friday – Saturday | 10:00 AM – 10:00 PM</span>
                 <p className="font-roboto text-sm text-[#eaddce]/70">Public event</p>
               </div>
               <div>
-                <span className="text-[#ff1493]">Monday – Tuesday | 3:00 PM – 9:00 PM</span>
+                <span className="text-[#ff1493]">Sunday | 07:00 AM - 08:00 PM</span>
                 <p className="font-roboto text-sm text-[#eaddce]/70">Vendor tear-down</p>
               </div>
             </div>

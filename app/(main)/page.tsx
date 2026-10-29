@@ -594,14 +594,14 @@ export default function Home() {
           </h2>
           <div className="font-roboto font-bold text-lg md:text-2xl text-white flex flex-col gap-4 tracking-wide">
             <p className="flex flex-col sm:flex-row justify-center items-center gap-1 sm:gap-0">
-              Friday – Sunday <span className="hidden sm:inline text-[#fadf29] mx-2">|</span> 
+              Friday – Saturday <span className="hidden sm:inline text-[#fadf29] mx-2">|</span> 
               <span className="sm:hidden text-[#fadf29]">▼</span>
-              8:00 AM – 9:00 PM
+              10:00 AM – 10:00 PM
             </p>
             <p className="flex flex-col sm:flex-row justify-center items-center gap-1 sm:gap-0">
-              Monday – Tuesday <span className="hidden sm:inline text-[#fadf29] mx-2">|</span> 
+              Sunday <span className="hidden sm:inline text-[#fadf29] mx-2">|</span> 
               <span className="sm:hidden text-[#fadf29]">▼</span>
-              3:00 PM – 9:00 PM
+              07:00 PM – 08:00 PM
             </p>
           </div>
         </div>
