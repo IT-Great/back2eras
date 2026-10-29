@@ -403,14 +403,14 @@ export default function Home() {
 
       {/* 1. TOP BANNER - Memakai ukuran spesifik 1920x1080 (Rasio 16:9) */}
       <section className="relative w-full border-b-4 border-[#13bbad]">
-        {/* <Image 
+        <Image 
           src="/assets/images/home-banner.jpg" 
           alt="Home Banner 80s Thrift Fest"
           width={1920}
           height={1080}
           priority
           className="w-full h-auto object-cover block"
-        /> */}
+        />
         <div className="absolute inset-0 bg-black/20"></div>
       </section>
 
