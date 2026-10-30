@@ -415,7 +415,7 @@ export default function Footer() {
             <div className="flex gap-4">
               {/* Instagram */}
               <a 
-                href="https://www.instagram.com/waroengdepesby" 
+                href="https://www.instagram.com/back2eras" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 border border-[#eaddce]/30 rounded-full flex items-center justify-center hover:bg-[#ff1493] hover:border-[#ff1493] hover:text-white transition-all text-[#eaddce]"
