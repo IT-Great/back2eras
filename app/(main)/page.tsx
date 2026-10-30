@@ -404,7 +404,7 @@ export default function Home() {
       {/* 1. TOP BANNER - Memakai ukuran spesifik 1920x1080 (Rasio 16:9) */}
       <section className="relative w-full border-b-4 border-[#13bbad]">
         <Image 
-          src="/assets/images/home-banner-new.jpg" 
+          src="/assets/images/home-banner-new2.jpg" 
           alt="Home Banner 80s Thrift Fest"
           width={1920}
           height={1080}
