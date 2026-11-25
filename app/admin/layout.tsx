@@ -1507,9 +1507,24 @@ function AdminLayoutContent({ children }: { children: React.ReactNode }) {
     router.push("/login");
   };
 
+  // const adminLinks = [
+  //   { name: "Dashboard", path: "/admin/dashboard", icon: "📊" },
+  //   { name: "Visitors", path: "/admin/visitors", icon: "🎟️" },
+  //   { name: "Vouchers", path: "/admin/vouchers", icon: "🏷️" },
+  //   { name: "Tenants", path: "/admin/tenants", icon: "🏪" },
+  //   { name: "Partners", path: "/admin/partners", icon: "🤝" },
+  //   { name: "Media", path: "/admin/media", icon: "📸" },
+  //   { name: "Talkshows", path: "/admin/talkshows", icon: "🎙️" },
+  //   { name: "Vendor Categories", path: "/admin/categories", icon: "📁" },
+  //   { name: "Stories", path: "/admin/stories", icon: "📰" },
+  //   { name: "Messages", path: "/admin/contacts", icon: "✉️" },
+  //   { name: "My Profile", path: "/admin/profile", icon: "⚙️" },
+  // ];
+
   const adminLinks = [
     { name: "Dashboard", path: "/admin/dashboard", icon: "📊" },
     { name: "Visitors", path: "/admin/visitors", icon: "🎟️" },
+    { name: "KOLs", path: "/admin/kols", icon: "🌟" },
     { name: "Vouchers", path: "/admin/vouchers", icon: "🏷️" },
     { name: "Tenants", path: "/admin/tenants", icon: "🏪" },
     { name: "Partners", path: "/admin/partners", icon: "🤝" },

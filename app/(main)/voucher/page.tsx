@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 // "use client";
 
 // import { useState, useEffect, useCallback } from "react";
@@ -355,6 +356,9 @@ export default function VoucherPage() {
   // Modal Detail E-Voucher & Syarat Ketentuan
   const [detailBrand, setDetailBrand] = useState<BrandVoucher | null>(null);
 
+  const [canClaimVoucher, setCanClaimVoucher] = useState(true);
+  const [claimBlockReason, setClaimBlockReason] = useState<string | null>(null);
+
   const fetchVouchersAndMe = useCallback(async () => {
     const token = localStorage.getItem("visitor_token");
     if (!token) {
@@ -391,6 +395,9 @@ export default function VoucherPage() {
 
       if (voucherRes.ok) {
         const voucherData = await voucherRes.json();
+        setBrands(voucherData.brands);
+        setCanClaimVoucher(voucherData.can_claim_voucher ?? true);
+        setClaimBlockReason(voucherData.claim_block_reason ?? null);
         setBrands(voucherData.brands);
       }
     } catch (error) {
@@ -576,6 +583,25 @@ export default function VoucherPage() {
           </div>
         </div>
 
+        {/* PERINGATAN KHUSUS KOL TANPA LINK MEDIA SOSIAL */}
+        {
+        !canClaimVoucher
+         && (
+          <div className="bg-black border-2 border-[#fadf29] rounded-xl p-5 mb-8 shadow-[4px_4px_0px_#ff1493] flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex items-start gap-3">
+              <span className="text-2xl">⚠️</span>
+              <div>
+                <p className="font-anton text-lg text-[#fadf29] uppercase tracking-wider">
+                  Klaim Voucher Terkunci untuk Akun KOL
+                </p>
+                <p className="text-sm text-gray-300 mt-0.5">
+                  {claimBlockReason || "Akun KOL wajib mengisi Link Media Sosial terlebih dahulu agar dapat mengklaim voucher."} Klik ikon profil di pojok kanan atas lalu pilih <strong className="text-[#0fdff8]">Edit Profil</strong> untuk menambahkan link media sosial Anda.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* 7 KARTU BRAND BERURUTAN */}
         {loadingVouchers ? (
           <p className="text-center text-[#0fdff8] font-anton text-xl animate-pulse py-10">
@@ -585,8 +611,14 @@ export default function VoucherPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {brands.map((brand, idx) => {
               const badge = getStatusBadge(brand);
+              // const isClaimDisabled =
+              //   claimingSlug === brand.slug || brand.is_expired || brand.remaining_quota <= 0;
+
               const isClaimDisabled =
-                claimingSlug === brand.slug || brand.is_expired || brand.remaining_quota <= 0;
+                !canClaimVoucher ||
+                claimingSlug === brand.slug ||
+                brand.is_expired ||
+                brand.remaining_quota <= 0;
 
               return (
                 <div
