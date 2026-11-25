@@ -558,10 +558,20 @@ export default function VoucherPage() {
             </p>
           </div>
 
-          <div className="shrink-0 bg-[#144333] border-2 border-[#fadf29] rounded-xl px-6 py-4 text-center shadow-[4px_4px_0px_#0fdff8]">
+          {/* <div className="shrink-0 bg-[#144333] border-2 border-[#fadf29] rounded-xl px-6 py-4 text-center shadow-[4px_4px_0px_#0fdff8]">
             <p className="text-xs uppercase tracking-widest text-[#eaddce]">Status Pendaftar</p>
             <p className="font-anton text-3xl text-[#fadf29] uppercase mt-1">
               Anda User ke-{user.user_number}
+            </p>
+          </div> */}
+
+          <div className="shrink-0 bg-[#144333] border-2 border-[#fadf29] rounded-xl px-6 py-4 text-center md:text-right shadow-[4px_4px_0px_#0fdff8] max-w-full md:max-w-xs">
+            <p className="text-xs uppercase tracking-widest text-[#0fdff8]">Akun Terdaftar</p>
+            <p className="font-anton text-2xl text-[#fadf29] uppercase mt-1 truncate">
+              {user.name}
+            </p>
+            <p className="text-xs text-[#eaddce] mt-0.5 truncate">
+              {user.email}
             </p>
           </div>
         </div>
@@ -738,10 +748,16 @@ export default function VoucherPage() {
                   </p>
                 </div>
 
-                <div>
+                {/* <div>
                   <p className="text-gray-400 uppercase tracking-wider text-[10px]">Pemilik Akun</p>
                   <p className="font-bold text-white mt-1 truncate">{user.name}</p>
                   <p className="text-[11px] text-[#0fdff8]">User ke-{user.user_number}</p>
+                </div> */}
+
+                <div>
+                  <p className="text-gray-400 uppercase tracking-wider text-[10px]">Pemilik Akun</p>
+                  <p className="font-bold text-white mt-1 truncate">{user.name}</p>
+                  <p className="text-[11px] text-[#0fdff8] truncate">{user.email}</p>
                 </div>
 
                 <div>
