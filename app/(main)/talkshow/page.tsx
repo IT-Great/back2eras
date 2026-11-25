@@ -1283,7 +1283,7 @@ export default function TalkshowPage() {
         </div>
 
         {/* BANNER BENEFIT VOUCHER TALKSHOW */}
-        <div className="bg-black border-2 border-dashed border-[#fadf29] rounded-xl p-5 mb-12 shadow-[4px_4px_0px_#ff1493]">
+        {/* <div className="bg-black border-2 border-dashed border-[#fadf29] rounded-xl p-5 mb-12 shadow-[4px_4px_0px_#ff1493]">
           <p className="font-anton text-lg text-[#fadf29] uppercase tracking-wider mb-2">
             🎁 Benefit Voucher Peserta Talkshow (Maks. 25 Orang / Sesi)
           </p>
@@ -1301,7 +1301,7 @@ export default function TalkshowPage() {
               <p>Akses klaim voucher otomatis terbuka di halaman <strong>Voucher</strong> setelah pendaftaran Anda <strong>disetujui (Accept)</strong> oleh admin.</p>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* DAFTAR TALKSHOW */}
         <section>
