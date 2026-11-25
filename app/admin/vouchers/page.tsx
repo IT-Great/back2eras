@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
@@ -251,8 +252,11 @@ export default function AdminVouchersPage() {
         <h1 className="font-anton text-4xl text-[#0fdff8] uppercase drop-shadow-[2px_2px_0px_#ff1493]">
           Verify &amp; Redeem Vouchers
         </h1>
-        <p className="text-gray-300 text-sm mt-1">
+        {/* <p className="text-gray-300 text-sm mt-1">
           Masukkan kode unik voucher dari pengunjung (misal: <span className="text-[#fadf29] font-bold">KCL001</span>) untuk mengecek keaslian dan menandainya sebagai sudah terpakai.
+        </p> */}
+        <p className="text-gray-300 text-sm mt-1">
+          Masukkan kode unik voucher dari pengunjung (misal: <span className="text-[#fadf29] font-bold">B2E261</span> atau <span className="text-[#fadf29] font-bold">KCLXB11</span>) untuk mengecek keaslian dan menandainya sebagai sudah terpakai.
         </p>
       </div>
 
@@ -263,11 +267,18 @@ export default function AdminVouchersPage() {
         </h2>
 
         <form onSubmit={handleVerifySubmit} className="flex flex-col sm:flex-row gap-3">
-          <input
+          {/* <input
             type="text"
             value={codeInput}
             onChange={(e) => setCodeInput(e.target.value.toUpperCase())}
             placeholder="Ketik kode voucher, contoh: KCL001, B2E001, WDP005..."
+            className="flex-1 px-5 py-4 bg-gray-900 border-2 border-[#13bbad] focus:border-[#fadf29] rounded-lg text-white font-anton text-xl tracking-widest uppercase outline-none placeholder:font-roboto placeholder:text-sm placeholder:tracking-normal placeholder:text-gray-500"
+          /> */}
+          <input
+            type="text"
+            value={codeInput}
+            onChange={(e) => setCodeInput(e.target.value.toUpperCase())}
+            placeholder="Ketik kode voucher, contoh: B2E261, SHLB11, GYC110, GLMB211, WDPE011, KCLXB11, MLHXB26..."
             className="flex-1 px-5 py-4 bg-gray-900 border-2 border-[#13bbad] focus:border-[#fadf29] rounded-lg text-white font-anton text-xl tracking-widest uppercase outline-none placeholder:font-roboto placeholder:text-sm placeholder:tracking-normal placeholder:text-gray-500"
           />
           <button
