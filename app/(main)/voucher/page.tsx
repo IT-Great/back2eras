@@ -1536,13 +1536,32 @@ const API_BASE = "https://back.back2eras.com/api";
 const VOUCHER_BANNER_DIR = "/assets/images/vouchers";
 
 // Pemetaan banner landscape per slug brand (glamoire belum tersedia sehingga dikosongkan)
+// const BRAND_BANNERS: Record<string, string> = {
+//   back2eras: `${VOUCHER_BANNER_DIR}/back2eras.png`,
+//   solher: `${VOUCHER_BANNER_DIR}/solher.png`,
+//   gycora: `${VOUCHER_BANNER_DIR}/gycora.png`,
+//   wdp: `${VOUCHER_BANNER_DIR}/wdp.png`,
+//   kecilung: `${VOUCHER_BANNER_DIR}/kecilung.png`,
+//   malaijia: `${VOUCHER_BANNER_DIR}/malaijia.png`,
+// };
+
+// Pemetaan banner landscape per slug brand (glamoire belum tersedia sehingga dikosongkan)
 const BRAND_BANNERS: Record<string, string> = {
   back2eras: `${VOUCHER_BANNER_DIR}/back2eras.png`,
   solher: `${VOUCHER_BANNER_DIR}/solher.png`,
   gycora: `${VOUCHER_BANNER_DIR}/gycora.png`,
-  wdp: `${VOUCHER_BANNER_DIR}/wdp.png`,
   kecilung: `${VOUCHER_BANNER_DIR}/kecilung.png`,
   malaijia: `${VOUCHER_BANNER_DIR}/malaijia.png`,
+};
+
+// Resolver banner sesuai slug brand & role akun (WDP: wdp.png untuk KOL, wdp-2.png untuk Visitor & Talkshow)
+const getBrandBanner = (slug: string, role?: string): string | undefined => {
+  if (slug === "wdp") {
+    return role === "kol"
+      ? `${VOUCHER_BANNER_DIR}/wdp.png`
+      : `${VOUCHER_BANNER_DIR}/wdp-2.png`;
+  }
+  return BRAND_BANNERS[slug];
 };
 
 const formatDateID = (isoString: string | null): string => {
@@ -1770,7 +1789,10 @@ export default function VoucherPage() {
     );
   }
 
-  const activeBannerSrc = detailBrand ? BRAND_BANNERS[detailBrand.slug] : undefined;
+  // const activeBannerSrc = detailBrand ? BRAND_BANNERS[detailBrand.slug] : undefined;
+  const activeBannerSrc = detailBrand
+    ? getBrandBanner(detailBrand.slug, userRole || user?.role)
+    : undefined;
 
   return (
     <div className="min-h-screen bg-[#144333] text-[#eaddce] font-roboto py-12 px-4 md:px-8">
@@ -2012,7 +2034,14 @@ export default function VoucherPage() {
             {/* BANNER LANDSCAPE BRAND (Tampil jika tersedia di BRAND_BANNERS) */}
             {activeBannerSrc && !bannerLoadFailed && (
               <div className="mb-5 rounded-xl overflow-hidden border-2 border-[#13bbad] bg-gray-950 shadow-[4px_4px_0px_rgba(15,223,248,0.25)]">
+                {/* <img
+                  src={activeBannerSrc}
+                  alt={`Banner Voucher ${detailBrand.name}`}
+                  onError={() => setBannerLoadFailed(true)}
+                  className="w-full h-auto max-h-72 object-contain block mx-auto"
+                /> */}
                 <img
+                  key={activeBannerSrc}
                   src={activeBannerSrc}
                   alt={`Banner Voucher ${detailBrand.name}`}
                   onError={() => setBannerLoadFailed(true)}
