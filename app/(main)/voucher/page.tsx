@@ -584,7 +584,7 @@ export default function VoucherPage() {
         </div>
 
         {/* PERINGATAN KHUSUS KOL TANPA LINK MEDIA SOSIAL */}
-        {
+        {/* {
         !canClaimVoucher
          && (
           <div className="bg-black border-2 border-[#fadf29] rounded-xl p-5 mb-8 shadow-[4px_4px_0px_#ff1493] flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -596,6 +596,23 @@ export default function VoucherPage() {
                 </p>
                 <p className="text-sm text-gray-300 mt-0.5">
                   {claimBlockReason || "Akun KOL wajib mengisi Link Media Sosial terlebih dahulu agar dapat mengklaim voucher."} Klik ikon profil di pojok kanan atas lalu pilih <strong className="text-[#0fdff8]">Edit Profil</strong> untuk menambahkan link media sosial Anda.
+                </p>
+              </div>
+            </div>
+          </div>
+        )} */}
+
+        {/* PERINGATAN KLAIM VOUCHER TERKUNCI (KOL / TALKSHOW PENDING) */}
+        {!canClaimVoucher && (
+          <div className="bg-black border-2 border-[#fadf29] rounded-xl p-5 mb-8 shadow-[4px_4px_0px_#ff1493] flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex items-start gap-3">
+              <span className="text-2xl">⚠️</span>
+              <div>
+                <p className="font-anton text-lg text-[#fadf29] uppercase tracking-wider">
+                  Akses Klaim Voucher Belum Aktif
+                </p>
+                <p className="text-sm text-gray-300 mt-0.5">
+                  {claimBlockReason || "Akun Anda belum memenuhi syarat untuk mengklaim voucher."}
                 </p>
               </div>
             </div>

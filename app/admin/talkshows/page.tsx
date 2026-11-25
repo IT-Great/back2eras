@@ -526,6 +526,8 @@ interface Talkshow {
   registrations_count: number;
   pending_count: number;
   approved_count: number;
+  active_count?: number;
+  max_participants?: number;
 }
 
 const API_BASE = "https://back.back2eras.com/api";
@@ -781,9 +783,27 @@ export default function AdminTalkshowsPage() {
                         minute: "2-digit",
                       })}
                     </td>
-                    <td className="p-4 whitespace-nowrap">
+                    {/* <td className="p-4 whitespace-nowrap">
                       <div className="flex flex-col gap-1 text-xs">
                         <span className="text-white font-bold">Total: {item.registrations_count ?? 0}</span>
+                        <div className="flex gap-2">
+                          <span className="text-[#fadf29]">Pending: {item.pending_count ?? 0}</span>
+                          <span className="text-green-400">Approved: {item.approved_count ?? 0}</span>
+                        </div>
+                      </div>
+                    </td> */}
+                    <td className="p-4 whitespace-nowrap">
+                      <div className="flex flex-col gap-1 text-xs">
+                        <div className="flex items-center gap-2">
+                          <span className="text-white font-bold">
+                            Slot: {item.active_count ?? 0} / {item.max_participants ?? 25}
+                          </span>
+                          {(item.active_count ?? 0) >= (item.max_participants ?? 25) && (
+                            <span className="px-1.5 py-0.5 bg-red-600 text-white text-[10px] font-bold rounded uppercase">
+                              Penuh
+                            </span>
+                          )}
+                        </div>
                         <div className="flex gap-2">
                           <span className="text-[#fadf29]">Pending: {item.pending_count ?? 0}</span>
                           <span className="text-green-400">Approved: {item.approved_count ?? 0}</span>
