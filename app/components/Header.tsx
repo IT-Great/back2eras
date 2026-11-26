@@ -3938,7 +3938,8 @@ export default function Header() {
           <div className="mt-4 pt-4 border-t border-[#144333]/20 flex flex-col gap-5 shrink-0">
             <div className="flex gap-4">
               <a
-                href="https://www.instagram.com/waroengdepesby"
+                // href="https://www.instagram.com/waroengdepesby"
+                href="https://www.instagram.com/back2eras"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 border-2 border-[#144333] text-[#144333] rounded-full flex items-center justify-center cursor-pointer hover:bg-[#ff1493] hover:border-[#ff1493] hover:text-white transition-all hover:-translate-y-1"
