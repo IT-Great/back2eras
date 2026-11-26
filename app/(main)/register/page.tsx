@@ -1070,6 +1070,7 @@ interface VisitorUser {
   role?: string;
   whatsapp: string;
   instagram: string;
+  community_code?: string;
   user_number: number;
 }
 
@@ -1094,6 +1095,7 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [instagram, setInstagram] = useState("");
+  const [communityCode, setCommunityCode] = useState("");
   const [subscribeNewsletter, setSubscribeNewsletter] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
@@ -1153,6 +1155,7 @@ export default function RegisterPage() {
       password,
       whatsapp,
       instagram,
+      community_code: communityCode.trim() || null,
       subscribe_newsletter: subscribeNewsletter,
     };
 
@@ -1453,6 +1456,48 @@ export default function RegisterPage() {
                   </div>
 
                   {/* Instagram */}
+                  {/* <div className="flex flex-col gap-2">
+                    <label htmlFor="instagram" className="font-anton tracking-wide text-[#eaddce] uppercase text-sm">
+                      Instagram Username <span className="text-gray-500 lowercase">(optional)</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="instagram"
+                      value={instagram}
+                      onChange={(e) => setInstagram(e.target.value)}
+                      placeholder="@yourusername"
+                      className="bg-black/60 border-2 border-[#13bbad] p-3 text-white focus:outline-none focus:border-[#0fdff8] rounded transition-colors placeholder:text-gray-600"
+                    />
+                  </div> */}
+
+                  {/* Consents */}
+                  {/* <div className="flex flex-col gap-4 mt-2">
+                    <label className="flex items-start gap-3 cursor-pointer group">
+                      <input type="checkbox" required className="mt-1 w-4 h-4 accent-[#ff1493]" />
+                      <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
+                        I agree to the{" "}
+                        <Link href="/privacy-policy" className="text-[#0fdff8] underline hover:text-[#ff1493]">
+                          Privacy Policy
+                        </Link>{" "}
+                        and event terms, and consent to my data being used for registration purposes.{" "}
+                        <span className="text-[#ff1493]">*</span>
+                      </span>
+                    </label>
+
+                    <label className="flex items-start gap-3 cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        checked={subscribeNewsletter}
+                        onChange={(e) => setSubscribeNewsletter(e.target.checked)}
+                        className="mt-1 w-4 h-4 accent-[#0fdff8]"
+                      />
+                      <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
+                        (Optional) Yes, send me updates about future Thrift Fest events, promotions, and exclusive drops.
+                      </span>
+                    </label>
+                  </div> */}
+
+                  {/* Instagram */}
                   <div className="flex flex-col gap-2">
                     <label htmlFor="instagram" className="font-anton tracking-wide text-[#eaddce] uppercase text-sm">
                       Instagram Username <span className="text-gray-500 lowercase">(optional)</span>
@@ -1467,6 +1512,24 @@ export default function RegisterPage() {
                     />
                   </div>
 
+                  {/* Community Code */}
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="communityCode" className="font-anton tracking-wide text-[#eaddce] uppercase text-sm">
+                      Community Code <span className="text-gray-500 lowercase">(optional)</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="communityCode"
+                      value={communityCode}
+                      onChange={(e) => setCommunityCode(e.target.value)}
+                      placeholder="Enter community code"
+                      className="bg-black/60 border-2 border-[#13bbad] p-3 text-white focus:outline-none focus:border-[#0fdff8] rounded transition-colors placeholder:text-gray-600"
+                    />
+                    <p className="text-xs text-[#0fdff8]/90 italic">
+                      Enter the exclusive code provided by our community representative.
+                    </p>
+                  </div>
+
                   {/* Consents */}
                   <div className="flex flex-col gap-4 mt-2">
                     <label className="flex items-start gap-3 cursor-pointer group">
@@ -1476,7 +1539,7 @@ export default function RegisterPage() {
                         <Link href="/privacy-policy" className="text-[#0fdff8] underline hover:text-[#ff1493]">
                           Privacy Policy
                         </Link>{" "}
-                        and event terms, and consent to my data being used for registration purposes.{" "}
+                        and event terms.{" "}
                         <span className="text-[#ff1493]">*</span>
                       </span>
                     </label>
