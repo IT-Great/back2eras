@@ -74,7 +74,7 @@
 //                 </Link>
 //               ))}
 //             </nav>
-            
+
 //             <div className="mt-auto pt-6 border-t border-[#144333]/20 text-[#144333] font-roboto font-bold text-sm">
 //               <p>Waroeng Depe &copy; 2026</p>
 //             </div>
@@ -177,7 +177,7 @@
 //                 </Link>
 //               ))}
 //             </nav>
-            
+
 //             {/* Footer Sidebar */}
 //             <div className="mt-auto pt-6 border-t border-[#144333]/20 text-[#144333] font-roboto font-bold text-sm flex items-center justify-between">
 //               <span>Waroeng Depe &copy; 2026</span>
@@ -284,7 +284,7 @@
 //                 </Link>
 //               ))}
 //             </nav>
-            
+
 //             {/* Footer Sidebar */}
 //             <div className="mt-auto pt-6 border-t border-[#144333]/20 text-[#144333] font-roboto font-bold text-sm flex items-center justify-between">
 //               <span>Waroeng Depe &copy; 2026</span>
@@ -395,10 +395,10 @@
 //                 </Link>
 //               ))}
 //             </nav>
-            
+
 //             {/* Bagian Bawah Sidebar (Social & Footer) */}
 //             <div className="mt-auto flex flex-col gap-6">
-              
+
 //               {/* Ikon Sosial Media (IG & TikTok) */}
 //               <div className="flex gap-4">
 //                 <a 
@@ -536,10 +536,10 @@
 //                 </Link>
 //               ))}
 //             </nav>
-            
+
 //             {/* Bagian Bawah Sidebar (Social & Footer) */}
 //             <div className="mt-4 pt-4 border-t border-[#144333]/20 flex flex-col gap-5 shrink-0">
-              
+
 //               {/* Ikon Sosial Media (IG & TikTok) */}
 //               <div className="flex gap-4">
 //                 <a 
@@ -603,7 +603,7 @@
 //     <>
 //       {/* HEADER BAR */}
 //       <header className="sticky top-0 z-40 flex items-center justify-between w-full px-4 md:px-6 py-4 md:py-6 bg-[#144333] text-[#eaddce] shadow-lg border-b-4 border-[#ff1493]">
-        
+
 //         {/* Hamburger Button (Kiri) - Ditambahkan cursor-pointer dan animasi hover scale */}
 //         <button
 //           onClick={() => setIsSidebarOpen(true)}
@@ -639,7 +639,7 @@
 //           isSidebarOpen ? "visible" : "invisible pointer-events-none"
 //         }`}
 //       >
-        
+
 //         {/* Backdrop (Latar Belakang Hitam Transparan) - Animasi Fade In/Out */}
 //         <div 
 //           className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300 ease-in-out ${
@@ -687,10 +687,10 @@
 //               </Link>
 //             ))}
 //           </nav>
-          
+
 //           {/* Bagian Bawah Sidebar (Social & Footer) */}
 //           <div className="mt-4 pt-4 border-t border-[#144333]/20 flex flex-col gap-5 shrink-0">
-            
+
 //             {/* Ikon Sosial Media (IG & TikTok) */}
 //             <div className="flex gap-4">
 //               <a 
@@ -778,7 +778,7 @@
 
 //       {/* HEADER BAR */}
 //       <header className="sticky top-0 z-40 flex items-center justify-between w-full px-4 md:px-6 py-4 md:py-6 bg-[#144333] text-[#eaddce] shadow-lg border-b-4 border-[#ff1493]">
-        
+
 //         {/* Hamburger Button (Kiri) */}
 //         <button
 //           onClick={() => setIsSidebarOpen(true)}
@@ -814,7 +814,7 @@
 //           isSidebarOpen ? "visible" : "invisible pointer-events-none"
 //         }`}
 //       >
-        
+
 //         {/* Backdrop (Latar Belakang Hitam Transparan) */}
 //         <div 
 //           className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300 ease-in-out ${
@@ -862,10 +862,10 @@
 //               </Link>
 //             ))}
 //           </nav>
-          
+
 //           {/* Bagian Bawah Sidebar (Social & Footer) */}
 //           <div className="mt-4 pt-4 border-t border-[#144333]/20 flex flex-col gap-5 shrink-0">
-            
+
 //             {/* Ikon Sosial Media (IG & TikTok) */}
 //             <div className="flex gap-4">
 //               <a 
@@ -946,7 +946,7 @@
 //         Menggunakan h-8 (32px) agar ukurannya konsisten.
 //       */}
 //       <div className="fixed top-0 left-0 right-0 h-8 bg-[#000000] z-50 border-b border-[#333] flex items-center justify-between px-4">
-        
+
 //         {/* Panah Kiri */}
 //         <button 
 //           onClick={() => setAnnouncementIndex((prev) => (prev === 0 ? announcements.length - 1 : prev - 1))}
@@ -985,7 +985,7 @@
 //         maka Header ini diberi mt-8 (margin-top: 32px) dan tetap sticky top-8.
 //       */}
 //       <header className="sticky top-8 mt-8 z-40 flex items-center justify-between w-full px-4 md:px-6 py-4 md:py-6 bg-[#144333] text-[#eaddce] shadow-lg border-b-4 border-[#ff1493]">
-        
+
 //         {/* Hamburger Button */}
 //         <button
 //           onClick={() => setIsSidebarOpen(true)}
@@ -1063,7 +1063,7 @@
 //               </Link>
 //             ))}
 //           </nav>
-          
+
 //           <div className="mt-4 pt-4 border-t border-[#144333]/20 flex flex-col gap-5 shrink-0">
 //             <div className="flex gap-4">
 //               <a 
@@ -1157,7 +1157,7 @@
 
 //       {/* ANNOUNCEMENT BAR (FIXED TOP) */}
 //       <div className="fixed top-0 left-0 right-0 h-10 bg-[#000000] z-50 border-b-2 border-[#13bbad] flex items-center justify-between px-4">
-        
+
 //         {/* Panah Kiri */}
 //         <button 
 //           onClick={() => {
@@ -1197,7 +1197,7 @@
 
 //       {/* HEADER BAR Utama */}
 //       <header className="sticky top-10 mt-10 z-40 flex items-center justify-between w-full px-4 md:px-6 py-4 md:py-6 bg-[#144333] text-[#eaddce] shadow-[0px_4px_20px_rgba(255,20,147,0.3)] border-b-4 border-[#ff1493]">
-        
+
 //         {/* Hamburger Button */}
 //         <button
 //           onClick={() => setIsSidebarOpen(true)}
@@ -1275,7 +1275,7 @@
 //               </Link>
 //             ))}
 //           </nav>
-          
+
 //           <div className="mt-4 pt-4 border-t border-[#144333]/20 flex flex-col gap-5 shrink-0">
 //             <div className="flex gap-4">
 //               <a 
@@ -1530,7 +1530,7 @@
 //               </Link>
 //             ))}
 //           </nav>
-          
+
 //           <div className="mt-4 pt-4 border-t border-[#144333]/20 flex flex-col gap-5 shrink-0">
 //             <div className="flex gap-4">
 //               <a 
@@ -3335,6 +3335,7 @@ interface VisitorUser {
   icon?: string;
   social_media_link?: string;
   can_claim_voucher?: boolean;
+  has_talkshow_registration?: boolean;
   user_number: number;
 }
 
@@ -3400,6 +3401,21 @@ export default function Header() {
   useEffect(() => {
     setIsHydrated(true);
     syncAuthState();
+
+    const token = localStorage.getItem("visitor_token");
+    if (token) {
+      fetch(`${API_BASE}/visitor/me`, {
+        headers: { Accept: "application/json", Authorization: `Bearer ${token}` },
+      })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((meData) => {
+          if (meData?.user) {
+            localStorage.setItem("visitor_user", JSON.stringify(meData.user));
+            setVisitorUser(meData.user);
+          }
+        })
+        .catch(() => { });
+    }
 
     window.addEventListener("visitor-auth-changed", syncAuthState);
     window.addEventListener("storage", syncAuthState);
@@ -3468,6 +3484,9 @@ export default function Header() {
     { name: "Visitor Registration", path: "/register" },
     { name: "KOL Registration", path: "/kol" },
     ...(visitorUser ? [{ name: "Claim Vouchers", path: "/voucher" }] : []),
+    ...(visitorUser?.has_talkshow_registration
+      ? [{ name: "Voucher Talkshow", path: "/voucher-talkshow" }]
+      : []),
     { name: "Tenant Registration", path: "/tenants" },
     { name: "Sponsorship & Partnership", path: "/partners" },
     { name: "Media Partnership", path: "/media" },
@@ -3514,7 +3533,8 @@ export default function Header() {
         showConfirmButton: false,
       });
 
-      router.push("/voucher");
+      // router.push("/voucher");
+      router.push(data.user.role === "talkshow" ? "/voucher-talkshow" : "/voucher");
     } catch (error: unknown) {
       const msg = error instanceof Error ? error.message : "Gagal terhubung ke server.";
       Swal.fire({
@@ -3646,7 +3666,11 @@ export default function Header() {
       showConfirmButton: false,
     });
 
-    if (pathname === "/voucher") {
+    // if (pathname === "/voucher") {
+    //   router.push("/");
+    // }
+
+    if (pathname === "/voucher" || pathname === "/voucher-talkshow") {
       router.push("/");
     }
   };
@@ -3779,6 +3803,27 @@ export default function Header() {
                     <p className="text-xs text-gray-400 truncate">{visitorUser.email}</p>
                   </div>
 
+                  {/* <div className="flex flex-col py-1">
+                    <Link
+                      href="/voucher"
+                      onClick={() => setIsProfileMenuOpen(false)}
+                      className="px-4 py-2.5 text-sm font-bold text-[#0fdff8] hover:bg-gray-900 transition-colors"
+                    >
+                      🎟️ Klaim Voucher
+                    </Link>
+                    <button
+                      onClick={openEditProfileModal}
+                      className="w-full text-left px-4 py-2.5 text-sm font-bold text-[#eaddce] hover:bg-gray-900 hover:text-[#fadf29] transition-colors cursor-pointer"
+                    >
+                      ✏️ Edit Profil
+                    </button>
+                    <button
+                      onClick={handleLogout}
+                      className="w-full text-left px-4 py-2.5 text-sm font-bold text-[#ff1493] hover:bg-[#ff1493] hover:text-white transition-colors border-t border-gray-800 cursor-pointer"
+                    >
+                      🚪 Logout
+                    </button>
+                  </div> */}
                   <div className="flex flex-col py-1">
                     <Link
                       href="/voucher"
@@ -3787,6 +3832,17 @@ export default function Header() {
                     >
                       🎟️ Klaim Voucher
                     </Link>
+
+                    {visitorUser.has_talkshow_registration && (
+                      <Link
+                        href="/voucher-talkshow"
+                        onClick={() => setIsProfileMenuOpen(false)}
+                        className="px-4 py-2.5 text-sm font-bold text-[#fadf29] hover:bg-gray-900 transition-colors"
+                      >
+                        🎙️ Voucher Talkshow
+                      </Link>
+                    )}
+
                     <button
                       onClick={openEditProfileModal}
                       className="w-full text-left px-4 py-2.5 text-sm font-bold text-[#eaddce] hover:bg-gray-900 hover:text-[#fadf29] transition-colors cursor-pointer"
@@ -3835,21 +3891,18 @@ export default function Header() {
 
       {/* SIDEBAR WRAPPER */}
       <div
-        className={`fixed inset-0 z-50 transition-all duration-300 ease-in-out ${
-          isSidebarOpen ? "visible" : "invisible pointer-events-none"
-        }`}
+        className={`fixed inset-0 z-50 transition-all duration-300 ease-in-out ${isSidebarOpen ? "visible" : "invisible pointer-events-none"
+          }`}
       >
         <div
-          className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300 ease-in-out ${
-            isSidebarOpen ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300 ease-in-out ${isSidebarOpen ? "opacity-100" : "opacity-0"
+            }`}
           onClick={() => setIsSidebarOpen(false)}
         ></div>
 
         <div
-          className={`absolute top-0 left-0 w-80 h-full bg-[#13bbad] p-6 shadow-2xl border-r-8 border-[#fadf29] flex flex-col transform transition-transform duration-300 ease-in-out ${
-            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
+          className={`absolute top-0 left-0 w-80 h-full bg-[#13bbad] p-6 shadow-2xl border-r-8 border-[#fadf29] flex flex-col transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
         >
           <div className="flex justify-between items-center mb-6 pb-4 border-b border-[#144333]/20 shrink-0">
             <Image

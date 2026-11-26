@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-hooks/set-state-in-effect */
 // "use client";
 
@@ -1496,6 +1497,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 interface VisitorUser {
   id: number;
@@ -1580,6 +1582,8 @@ const roleLabel = (role?: string): string => {
 };
 
 export default function VoucherPage() {
+  const router = useRouter();
+
   const [user, setUser] = useState<VisitorUser | null>(null);
   const [userRole, setUserRole] = useState<string>("visitor");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -1648,6 +1652,12 @@ export default function VoucherPage() {
 
       if (voucherRes.ok) {
         const voucherData = await voucherRes.json();
+
+        if (voucherData.redirect_to_talkshow_page) {
+          router.replace("/voucher-talkshow");
+          return;
+        }
+
         setBrands(voucherData.brands || []);
         setUserRole(voucherData.user_role || meData.user?.role || "visitor");
         setCanClaimVoucher(voucherData.can_claim_voucher ?? true);
@@ -1661,7 +1671,7 @@ export default function VoucherPage() {
       setLoadingVouchers(false);
       setCheckingAuth(false);
     }
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     fetchVouchersAndMe();
@@ -2017,12 +2027,12 @@ export default function VoucherPage() {
                           {!canClaimVoucher
                             ? "Belum Dapat Diklaim"
                             : claimingSlug === brand.slug
-                            ? "Mengklaim..."
-                            : brand.is_expired
-                            ? "Periode Berakhir"
-                            : brand.remaining_quota <= 0
-                            ? "Kuota Habis"
-                            : `Klaim ${brand.name}`}
+                              ? "Mengklaim..."
+                              : brand.is_expired
+                                ? "Periode Berakhir"
+                                : brand.remaining_quota <= 0
+                                  ? "Kuota Habis"
+                                  : `Klaim ${brand.name}`}
                         </button>
 
                         <button

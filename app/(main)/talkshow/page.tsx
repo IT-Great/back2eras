@@ -1207,10 +1207,29 @@ export default function TalkshowPage() {
       }
 
       // Auto-login jika baru saja dibuatkan akun talkshow
+      // if (result.token && result.user) {
+      //   localStorage.setItem("visitor_token", result.token);
+      //   localStorage.setItem("visitor_user", JSON.stringify(result.user));
+      //   window.dispatchEvent(new Event("visitor-auth-changed"));
+      // }
+
+      // Auto-login jika baru dibuatkan akun, atau update flag talkshow jika sudah login sebagai Visitor/KOL
       if (result.token && result.user) {
         localStorage.setItem("visitor_token", result.token);
         localStorage.setItem("visitor_user", JSON.stringify(result.user));
         window.dispatchEvent(new Event("visitor-auth-changed"));
+      } else {
+        const existingStr = localStorage.getItem("visitor_user");
+        if (existingStr) {
+          try {
+            const parsed = JSON.parse(existingStr);
+            parsed.has_talkshow_registration = true;
+            localStorage.setItem("visitor_user", JSON.stringify(parsed));
+            window.dispatchEvent(new Event("visitor-auth-changed"));
+          } catch {
+            // abaikan
+          }
+        }
       }
 
       const bookedTheme = selectedTalkshow.theme;
@@ -1232,7 +1251,7 @@ export default function TalkshowPage() {
         `,
         icon: "success",
         showCancelButton: true,
-        confirmButtonText: "Lihat Halaman Voucher",
+        confirmButtonText: "Lihat Voucher Talkshow",
         cancelButtonText: "Tutup",
         background: "#144333",
         color: "#eaddce",
@@ -1241,7 +1260,8 @@ export default function TalkshowPage() {
       });
 
       if (swalRes.isConfirmed) {
-        router.push("/voucher");
+        // router.push("/voucher");
+        router.push("/voucher-talkshow");
       }
     } catch (error: unknown) {
       const msg = error instanceof Error ? error.message : "Terjadi kesalahan pada server.";
@@ -1340,29 +1360,27 @@ export default function TalkshowPage() {
                       {/* Badge Status Pendaftaran User (Kiri Atas) */}
                       {myStatus && (
                         <span
-                          className={`absolute top-3 left-3 px-3 py-1 rounded-full font-anton text-xs uppercase tracking-wider shadow ${
-                            myStatus === "approved"
-                              ? "bg-green-600 text-white"
-                              : myStatus === "rejected"
+                          className={`absolute top-3 left-3 px-3 py-1 rounded-full font-anton text-xs uppercase tracking-wider shadow ${myStatus === "approved"
+                            ? "bg-green-600 text-white"
+                            : myStatus === "rejected"
                               ? "bg-red-600 text-white"
                               : "bg-[#fadf29] text-black"
-                          }`}
+                            }`}
                         >
                           {myStatus === "approved"
                             ? `✓ Approved${myRank ? ` #${myRank}` : ""}`
                             : myStatus === "rejected"
-                            ? "✕ Ditolak"
-                            : "⏳ Pending"}
+                              ? "✕ Ditolak"
+                              : "⏳ Pending"}
                         </span>
                       )}
 
                       {/* Badge Sisa Kuota (Kanan Atas) */}
                       <span
-                        className={`absolute top-3 right-3 px-3 py-1 rounded-full font-anton text-xs uppercase tracking-wider shadow ${
-                          isFull
-                            ? "bg-red-600 text-white"
-                            : "bg-black/85 text-[#fadf29] border border-[#fadf29]"
-                        }`}
+                        className={`absolute top-3 right-3 px-3 py-1 rounded-full font-anton text-xs uppercase tracking-wider shadow ${isFull
+                          ? "bg-red-600 text-white"
+                          : "bg-black/85 text-[#fadf29] border border-[#fadf29]"
+                          }`}
                       >
                         {isFull ? "KUOTA PENUH (25/25)" : `Sisa ${remaining}/${maxSlot} Kursi`}
                       </span>
@@ -1389,11 +1407,17 @@ export default function TalkshowPage() {
                             <div className="w-full py-2.5 px-3 bg-green-950/70 border border-green-400 text-green-300 text-center text-xs font-bold uppercase rounded">
                               ✓ Terdaftar (Approved{myRank ? ` — Urutan #${myRank}` : ""})
                             </div>
-                            <Link
+                            {/* <Link
                               href="/voucher"
                               className="block w-full py-2.5 bg-[#fadf29] hover:bg-yellow-300 text-black text-center font-anton text-base uppercase tracking-widest rounded shadow-[3px_3px_0px_#0fdff8] transition-colors"
                             >
                               🎟️ Klaim Voucher Sekarang
+                            </Link> */}
+                            <Link
+                              href="/voucher-talkshow"
+                              className="block w-full py-2.5 bg-[#fadf29] hover:bg-yellow-300 text-black text-center font-anton text-base uppercase tracking-widest rounded shadow-[3px_3px_0px_#0fdff8] transition-colors"
+                            >
+                              🎟️ Klaim Voucher Talkshow
                             </Link>
                           </div>
                         ) : myStatus === "pending" ? (
@@ -1416,11 +1440,10 @@ export default function TalkshowPage() {
                           <button
                             onClick={() => openRegisterModal(item)}
                             disabled={isFull}
-                            className={`w-full py-3 font-anton text-lg uppercase tracking-widest rounded transition-transform ${
-                              isFull
-                                ? "bg-gray-700 text-gray-400 cursor-not-allowed"
-                                : "bg-[#ff1493] hover:bg-[#e01082] text-white shadow-[3px_3px_0px_#0fdff8] active:translate-y-0.5 cursor-pointer"
-                            }`}
+                            className={`w-full py-3 font-anton text-lg uppercase tracking-widest rounded transition-transform ${isFull
+                              ? "bg-gray-700 text-gray-400 cursor-not-allowed"
+                              : "bg-[#ff1493] hover:bg-[#e01082] text-white shadow-[3px_3px_0px_#0fdff8] active:translate-y-0.5 cursor-pointer"
+                              }`}
                           >
                             {isFull ? "Kuota Penuh (25/25)" : "Daftar Talkshow"}
                           </button>
