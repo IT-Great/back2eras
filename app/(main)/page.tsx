@@ -699,13 +699,25 @@ import Image from "next/image";
 
 const SPONSOR_LOGO_DIR = "/assets/images/logos";
 
-const SPONSOR_LOGOS = [
-  { name: "Waroeng Depe", src: `${SPONSOR_LOGO_DIR}/wdp.png` },
+// const SPONSOR_LOGOS = [
+//   { name: "Waroeng Depe", src: `${SPONSOR_LOGO_DIR}/wdp.png` },
+//   { name: "The Kecilung", src: `${SPONSOR_LOGO_DIR}/kecilung.png` },
+//   { name: "Kopitiam Ma Lai Jia", src: `${SPONSOR_LOGO_DIR}/malaijia.png` },
+//   { name: "Glamoire", src: `${SPONSOR_LOGO_DIR}/glamoire.png` },
+//   { name: "Rakora", src: `${SPONSOR_LOGO_DIR}/rakora.png` },
+// ];
+
+const TOP_SPONSOR_LOGOS = [
   { name: "The Kecilung", src: `${SPONSOR_LOGO_DIR}/kecilung.png` },
   { name: "Kopitiam Ma Lai Jia", src: `${SPONSOR_LOGO_DIR}/malaijia.png` },
   { name: "Glamoire", src: `${SPONSOR_LOGO_DIR}/glamoire.png` },
   { name: "Rakora", src: `${SPONSOR_LOGO_DIR}/rakora.png` },
 ];
+
+const BOTTOM_SPONSOR_LOGO = {
+  name: "Waroeng Depe",
+  src: `${SPONSOR_LOGO_DIR}/wdp.png`,
+};
 
 export default function Home() {
   // --- LOGIKA COUNTDOWN TIMER ---
@@ -1008,7 +1020,7 @@ export default function Home() {
       </section> */}
 
       {/* 9. BRANDS LOGOS SPONSOR SECTION */}
-      <section className="w-full bg-white py-10 md:py-14 border-t-8 border-[#13bbad]">
+      {/* <section className="w-full bg-white py-10 md:py-14 border-t-8 border-[#13bbad]">
         <div className="max-w-7xl mx-auto px-6">
           <h3 className="text-center font-anton text-xl md:text-2xl text-gray-500 uppercase tracking-widest mb-8 md:mb-10">
             Supported By
@@ -1026,6 +1038,42 @@ export default function Home() {
                 />
               </div>
             ))}
+          </div>
+        </div>
+      </section> */}
+
+      {/* 9. BRANDS LOGOS SPONSOR SECTION */}
+      <section className="w-full bg-white py-10 md:py-14 border-t-8 border-[#13bbad]">
+        <div className="max-w-6xl mx-auto px-6">
+          <h3 className="text-center font-anton text-xl md:text-2xl text-gray-500 uppercase tracking-widest mb-8 md:mb-10">
+            Supported By
+          </h3>
+
+          {/* Baris Atas: 4 Logo */}
+          <div className="grid grid-cols-2 md:grid-cols-4 items-center justify-items-center gap-8 md:gap-12">
+            {TOP_SPONSOR_LOGOS.map((logo) => (
+              <div
+                key={logo.name}
+                className="flex items-center justify-center p-2 transition-transform duration-300 hover:scale-105"
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.name}
+                  className="h-14 sm:h-16 md:h-20 w-auto max-w-[180px] object-contain"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Baris Bawah: 1 Logo (Waroeng Depe) */}
+          <div className="mt-8 md:mt-10 flex justify-center">
+            <div className="flex items-center justify-center p-2 transition-transform duration-300 hover:scale-105">
+              <img
+                src={BOTTOM_SPONSOR_LOGO.src}
+                alt={BOTTOM_SPONSOR_LOGO.name}
+                className="h-14 sm:h-16 md:h-20 w-auto max-w-[180px] object-contain"
+              />
+            </div>
           </div>
         </div>
       </section>
