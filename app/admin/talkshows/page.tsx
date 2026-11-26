@@ -728,7 +728,7 @@ export default function AdminTalkshowsPage() {
           onClick={openCreateModal}
           className="px-6 py-3 bg-[#ff1493] hover:bg-[#e01082] text-white font-anton uppercase tracking-wider rounded shadow-[3px_3px_0px_#0fdff8] cursor-pointer"
         >
-          + Tambah Talkshow
+          (+) Tambah Talkshow
         </button>
       </div>
 
