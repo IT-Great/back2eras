@@ -355,6 +355,15 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+const SPONSOR_LOGO_DIR = "/assets/images/logos";
+
+const SPONSOR_LOGOS = [
+  { name: "Waroeng Depe", src: `${SPONSOR_LOGO_DIR}/wdp.png` },
+  { name: "The Kecilung", src: `${SPONSOR_LOGO_DIR}/kecilung.png` },
+  { name: "Kopitiam Ma Lai Jia", src: `${SPONSOR_LOGO_DIR}/malaijia.png` },
+  { name: "Glamoire", src: `${SPONSOR_LOGO_DIR}/glamoire.png` },
+];
+
 export default function Home() {
   // --- LOGIKA COUNTDOWN TIMER ---
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -640,7 +649,7 @@ export default function Home() {
       </section>
 
       {/* 9. BRANDS LOGOS SPONSOR SECTION */}
-      <section className="w-full bg-white py-10 md:py-12 border-t-8 border-[#13bbad]">
+      {/* <section className="w-full bg-white py-10 md:py-12 border-t-8 border-[#13bbad]">
         <div className="max-w-7xl mx-auto px-6">
           <h3 className="text-center font-anton text-xl md:text-2xl text-gray-400 uppercase tracking-widest mb-6 md:mb-8">
             Supported By
@@ -651,6 +660,29 @@ export default function Home() {
             <span className="font-roboto font-black text-2xl md:text-4xl text-black italic">VINTAGE VAULT</span>
             <span className="font-anton text-2xl md:text-4xl text-black uppercase tracking-widest">NeonCity</span>
             <span className="font-pacifico text-2xl md:text-4xl text-black">Waroeng Depe</span>
+          </div>
+        </div>
+      </section> */}
+
+      {/* 9. BRANDS LOGOS SPONSOR SECTION */}
+      <section className="w-full bg-white py-10 md:py-14 border-t-8 border-[#13bbad]">
+        <div className="max-w-6xl mx-auto px-6">
+          <h3 className="text-center font-anton text-xl md:text-2xl text-gray-500 uppercase tracking-widest mb-8 md:mb-10">
+            Supported By
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 items-center justify-items-center gap-8 md:gap-12">
+            {SPONSOR_LOGOS.map((logo) => (
+              <div
+                key={logo.name}
+                className="flex items-center justify-center p-2 transition-transform duration-300 hover:scale-105"
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.name}
+                  className="h-14 sm:h-16 md:h-20 w-auto max-w-[180px] object-contain"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
