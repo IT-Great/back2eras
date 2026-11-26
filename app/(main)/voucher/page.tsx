@@ -1596,6 +1596,9 @@ export default function VoucherPage() {
   const [canClaimVoucher, setCanClaimVoucher] = useState(true);
   const [claimBlockReason, setClaimBlockReason] = useState<string | null>(null);
 
+  const [hasTalkshowGoodiebag, setHasTalkshowGoodiebag] = useState(false);
+  const [talkshowRank, setTalkshowRank] = useState<number | null>(null);
+
   const openDetailModal = (brand: BrandVoucher) => {
     setBannerLoadFailed(false);
     setDetailBrand(brand);
@@ -1635,12 +1638,22 @@ export default function VoucherPage() {
       localStorage.setItem("visitor_user", JSON.stringify(meData.user));
       setIsAuthenticated(true);
 
+      // if (voucherRes.ok) {
+      //   const voucherData = await voucherRes.json();
+      //   setBrands(voucherData.brands || []);
+      //   setUserRole(voucherData.user_role || meData.user?.role || "visitor");
+      //   setCanClaimVoucher(voucherData.can_claim_voucher ?? true);
+      //   setClaimBlockReason(voucherData.claim_block_reason ?? null);
+      // }
+
       if (voucherRes.ok) {
         const voucherData = await voucherRes.json();
         setBrands(voucherData.brands || []);
         setUserRole(voucherData.user_role || meData.user?.role || "visitor");
         setCanClaimVoucher(voucherData.can_claim_voucher ?? true);
         setClaimBlockReason(voucherData.claim_block_reason ?? null);
+        setHasTalkshowGoodiebag(Boolean(voucherData.has_talkshow_goodiebag));
+        setTalkshowRank(voucherData.talkshow_rank ?? null);
       }
     } catch (error) {
       console.error("Failed loading voucher page:", error);
@@ -1840,6 +1853,40 @@ export default function VoucherPage() {
               </div>
             </div>
           </div>
+        )}
+
+        {/* INFORMASI FREE GOODIE BAG TALKSHOW (INFORMASI SAJA, TANPA KLAIM / REDEEM) */}
+        {hasTalkshowGoodiebag ? (
+          <div className="bg-black border-2 border-dashed border-[#0fdff8] rounded-xl p-5 mb-8 shadow-[4px_4px_0px_#fadf29] flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl shrink-0">🎁</span>
+              <div>
+                <div className="flex flex-wrap items-center gap-2 mb-1">
+                  <p className="font-anton text-xl text-[#fadf29] uppercase tracking-wider">
+                    Free Goodie Bag — Top 5 Peserta Talkshow
+                  </p>
+                  <span className="px-2.5 py-0.5 bg-green-600/30 border border-green-400 text-green-300 text-[11px] font-bold uppercase rounded-full">
+                    ✓ Berhak Mendapatkan{talkshowRank ? ` (Urutan #${talkshowRank})` : ""}
+                  </span>
+                </div>
+                <p className="text-sm text-gray-200 leading-relaxed">
+                  Selamat! Anda termasuk dalam <strong className="text-[#0fdff8]">5 pendaftar pertama Talkshow</strong> yang disetujui admin dan berhak mendapatkan <strong className="text-[#fadf29]">Free Goodie Bag</strong>.
+                </p>
+                <p className="text-xs text-gray-400 mt-1.5">
+                  ℹ️ Tidak perlu klaim kode atau redeem. Cukup tunjukkan nama &amp; email akun ini kepada panitia di Booth Registrasi BACK2ERAS (27 – 29 November 2026).
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : (
+          userRole === "talkshow" && (
+            <div className="bg-black/80 border border-gray-700 rounded-xl p-4 mb-8 flex items-start gap-3">
+              <span className="text-xl shrink-0">🎁</span>
+              <p className="text-xs md:text-sm text-gray-300 leading-relaxed">
+                <strong className="text-[#fadf29] uppercase">Info Free Goodie Bag:</strong> Free Goodie Bag khusus diberikan kepada <strong className="text-white">5 pendaftar pertama Talkshow</strong> yang disetujui admin (tanpa perlu klaim kode atau redeem).
+              </p>
+            </div>
+          )
         )}
 
         {/* DAFTAR KARTU BRAND */}
