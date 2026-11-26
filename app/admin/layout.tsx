@@ -1530,7 +1530,7 @@ function AdminLayoutContent({ children }: { children: React.ReactNode }) {
     { name: "Partners", path: "/admin/partners", icon: "🤝" },
     { name: "Media", path: "/admin/media", icon: "📸" },
     { name: "Talkshows", path: "/admin/talkshows", icon: "🎙️" },
-    { name: "Vendor Categories", path: "/admin/categories", icon: "📁" },
+    { name: "Vendor", path: "/admin/categories", icon: "📁" },
     { name: "Stories", path: "/admin/stories", icon: "📰" },
     { name: "Messages", path: "/admin/contacts", icon: "✉️" },
     { name: "My Profile", path: "/admin/profile", icon: "⚙️" },
