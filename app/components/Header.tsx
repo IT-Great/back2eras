@@ -3380,7 +3380,8 @@ export default function Header() {
   });
   const [isHydrated, setIsHydrated] = useState(false);
 
-  const targetDate = new Date("2026-11-27T08:00:00").getTime();
+  // const targetDate = new Date("2026-11-27T08:00:00").getTime();
+  const targetDate = new Date("2026-11-27T10:00:00+07:00").getTime();
 
   const syncAuthState = () => {
     const token = localStorage.getItem("visitor_token");

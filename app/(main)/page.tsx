@@ -360,10 +360,35 @@ export default function Home() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [mounted, setMounted] = useState(false); // Mencegah error hydration dari Next.js
 
+  // useEffect(() => {
+  //   setMounted(true);
+  //   // Atur tanggal target acara (27 Nov 2026, 08:00 AM)
+  //   const targetDate = new Date("2026-11-27T08:00:00").getTime();
+
+  //   const interval = setInterval(() => {
+  //     const now = new Date().getTime();
+  //     const distance = targetDate - now;
+
+  //     if (distance < 0) {
+  //       clearInterval(interval);
+  //       setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  //     } else {
+  //       setTimeLeft({
+  //         days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+  //         hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+  //         minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+  //         seconds: Math.floor((distance % (1000 * 60)) / 1000),
+  //       });
+  //     }
+  //   }, 1000);
+
+  //   return () => clearInterval(interval);
+  // }, []);
+
   useEffect(() => {
     setMounted(true);
-    // Atur tanggal target acara (27 Nov 2026, 08:00 AM)
-    const targetDate = new Date("2026-11-27T08:00:00").getTime();
+    // Atur tanggal target acara (27 Nov 2026, 10:00 AM WIB)
+    const targetDate = new Date("2026-11-27T10:00:00+07:00").getTime();
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
