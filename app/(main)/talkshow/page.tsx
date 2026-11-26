@@ -1244,7 +1244,7 @@ export default function TalkshowPage() {
             <div class="bg-black/60 border border-[#0fdff8] rounded p-3 text-xs space-y-1">
               <p class="text-[#0fdff8] font-bold uppercase">Info Klaim Voucher:</p>
               <p>• Voucher baru dapat diklaim setelah status pendaftaran Anda <strong>di-Accept (Approve)</strong> oleh admin.</p>
-              <p>• <strong>5 Pendaftar Pertama (Approved):</strong> Free Goodie Bag + Semua 7 Voucher Brand.</p>
+              <p>• <strong>5 Pendaftar Pertama (Approved):</strong> Free Goodie Bag + Semua Voucher Brand.</p>
               <p>• <strong>Pendaftar ke 6–25 (Approved):</strong> 6 Voucher Brand Partner (kecuali Back2eras).</p>
             </div>
           </div>

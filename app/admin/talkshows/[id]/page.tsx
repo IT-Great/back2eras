@@ -710,7 +710,7 @@ export default function AdminTalkshowDetailPage() {
                           }`}
                         >
                           {reg.approved_rank <= 5
-                            ? `Urutan #${reg.approved_rank} • Goodie Bag + 7 Voucher`
+                            ? `Urutan #${reg.approved_rank} • Goodie Bag + Semua Voucher`
                             : `Urutan #${reg.approved_rank} • 6 Voucher (Tanpa Back2eras)`}
                         </p>
                       )}
