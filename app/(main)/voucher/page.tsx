@@ -2198,7 +2198,7 @@ export default function VoucherPage() {
             )}
 
             {/* Daftar Lengkap Syarat & Ketentuan */}
-            <div className="mb-6">
+            {/* <div className="mb-6">
               <h3 className="font-anton text-lg text-[#0fdff8] uppercase tracking-wider mb-3">
                 Syarat &amp; Ketentuan
               </h3>
@@ -2206,6 +2206,50 @@ export default function VoucherPage() {
                 {detailBrand.terms.map((term, i) => (
                   <li key={i}>{term}</li>
                 ))}
+              </ol>
+            </div> */}
+
+            {/* Daftar Lengkap Syarat & Ketentuan */}
+            <div className="mb-6">
+              <h3 className="font-anton text-lg text-[#0fdff8] uppercase tracking-wider mb-3">
+                Syarat &amp; Ketentuan
+              </h3>
+
+              {/* Highlight Khusus KOL untuk WDP */}
+              {userRole === "kol" && detailBrand.slug === "wdp" && (
+                <div className="mb-4 px-4 py-3 bg-[#fadf29]/15 border-2 border-[#fadf29] rounded-xl flex items-start gap-2.5">
+                  <span className="text-lg shrink-0">📅</span>
+                  <div className="text-xs md:text-sm text-[#eaddce] leading-relaxed">
+                    <p className="font-anton text-[#fadf29] uppercase tracking-wider">
+                      Periode Berlaku Khusus KOL
+                    </p>
+                    <p className="mt-0.5">
+                      Voucher WDP khusus KOL <strong className="text-white">hanya berlaku pada tanggal 27 – 29 November 2026 saja</strong> dan tidak dapat digunakan di luar tanggal tersebut.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              <ol className="list-decimal list-outside pl-5 space-y-2 text-sm text-gray-200 leading-relaxed">
+                {detailBrand.terms.map((term, i) => {
+                  const isWdpKolDateRule =
+                    userRole === "kol" &&
+                    detailBrand.slug === "wdp" &&
+                    term.includes("27 - 29 November 2026");
+
+                  return (
+                    <li
+                      key={i}
+                      className={
+                        isWdpKolDateRule
+                          ? "text-[#fadf29] font-bold"
+                          : undefined
+                      }
+                    >
+                      {term}
+                    </li>
+                  );
+                })}
               </ol>
             </div>
 
