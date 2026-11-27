@@ -1899,6 +1899,30 @@ export default function VoucherPage() {
           )
         )}
 
+        {/* INFORMASI KHUSUS KOL: HADIAH GOODIE BAG VOUCHER BACK2ERAS + DISC 10% MIN. BELANJA RP50.000 */}
+        {userRole === "kol" && (
+          <div className="bg-black border-2 border-dashed border-[#ff1493] rounded-xl p-5 mb-8 shadow-[4px_4px_0px_#0fdff8] flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl shrink-0">🎁</span>
+              <div>
+                <div className="flex flex-wrap items-center gap-2 mb-1">
+                  <p className="font-anton text-xl text-[#fadf29] uppercase tracking-wider">
+                    Benefit Khusus KOL — Voucher Back2eras
+                  </p>
+                  <span className="px-2.5 py-0.5 bg-[#ff1493]/30 border border-[#ff1493] text-pink-200 text-[11px] font-bold uppercase rounded-full">
+                    KOL Exclusive
+                  </span>
+                </div>
+                <p className="text-sm text-gray-200 leading-relaxed">
+                  Klaim voucher <strong className="text-white">Back2eras</strong> di bawah ini untuk mendapatkan{" "}
+                  <strong className="text-[#fadf29]">Hadiah Goodie Bag</strong> serta{" "}
+                  <strong className="text-[#0fdff8]">Disc 10% dengan minimal belanja Rp50.000</strong>.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* DAFTAR KARTU BRAND */}
         {loadingVouchers ? (
           <p className="text-center text-[#0fdff8] font-anton text-xl animate-pulse py-10">
@@ -2104,6 +2128,13 @@ export default function VoucherPage() {
                   onError={() => setBannerLoadFailed(true)}
                   className="w-full h-auto max-h-72 object-contain block mx-auto"
                 />
+              </div>
+            )}
+
+            {/* Promo Highlight di Modal Detail */}
+            {detailBrand.promo_highlight && (
+              <div className="mb-5 px-4 py-3 bg-[#ff1493]/20 border-2 border-[#ff1493] rounded-xl text-xs md:text-sm font-bold text-[#fadf29]">
+                ✨ {detailBrand.promo_highlight}
               </div>
             )}
 
