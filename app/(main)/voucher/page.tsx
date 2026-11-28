@@ -1948,6 +1948,37 @@ export default function VoucherPage() {
           </div>
         )}
 
+        {/* INFORMASI KHUSUS KOL: BACK2ERAS & GLAMOIRE */}
+        {userRole === "kol" && (
+          <div className="bg-black border-2 border-dashed border-[#ff1493] rounded-xl p-5 mb-8 shadow-[4px_4px_0px_#0fdff8] flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex items-start gap-3">
+              <span className="text-3xl shrink-0">🎁</span>
+              <div>
+                <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                  <p className="font-anton text-xl text-[#fadf29] uppercase tracking-wider">
+                    Benefit Khusus KOL — BACK2ERAS 2026
+                  </p>
+                  <span className="px-2.5 py-0.5 bg-[#ff1493]/30 border border-[#ff1493] text-pink-200 text-[11px] font-bold uppercase rounded-full">
+                    KOL Exclusive
+                  </span>
+                </div>
+                <ul className="text-sm text-gray-200 leading-relaxed space-y-1">
+                  <li>
+                    • <strong className="text-white">Voucher Back2eras:</strong>{" "}
+                    <strong className="text-[#fadf29]">Hadiah Goodie Bag</strong> serta{" "}
+                    <strong className="text-[#0fdff8]">Disc 10% dengan minimal belanja Rp50.000</strong>.
+                  </li>
+                  <li>
+                    • <strong className="text-white">Voucher Glamoire:</strong>{" "}
+                    <strong className="text-[#fadf29]">Free Redeem Parfum</strong> langsung di{" "}
+                    <strong className="text-[#0fdff8]">Booth Glamoire</strong>.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* DAFTAR KARTU BRAND */}
         {loadingVouchers ? (
           <p className="text-center text-[#0fdff8] font-anton text-xl animate-pulse py-10">
