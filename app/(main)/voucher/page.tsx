@@ -1548,20 +1548,45 @@ const VOUCHER_BANNER_DIR = "/assets/images/vouchers";
 // };
 
 // Pemetaan banner landscape per slug brand (glamoire belum tersedia sehingga dikosongkan)
+// const BRAND_BANNERS: Record<string, string> = {
+//   back2eras: `${VOUCHER_BANNER_DIR}/back2eras.png`,
+//   solher: `${VOUCHER_BANNER_DIR}/solher.png`,
+//   gycora: `${VOUCHER_BANNER_DIR}/gycora.png`,
+//   kecilung: `${VOUCHER_BANNER_DIR}/kecilung.png`,
+//   malaijia: `${VOUCHER_BANNER_DIR}/malaijia.png`,
+// };
+
+// // Resolver banner sesuai slug brand & role akun (WDP: wdp.png untuk KOL, wdp-2.png untuk Visitor & Talkshow)
+// const getBrandBanner = (slug: string, role?: string): string | undefined => {
+//   if (slug === "wdp") {
+//     return role === "kol"
+//       ? `${VOUCHER_BANNER_DIR}/wdp.png`
+//       : `${VOUCHER_BANNER_DIR}/wdp-2.png`;
+//   }
+//   return BRAND_BANNERS[slug];
+// };
+
+// Pemetaan banner landscape per slug brand (glamoire belum tersedia sehingga dikosongkan)
 const BRAND_BANNERS: Record<string, string> = {
   back2eras: `${VOUCHER_BANNER_DIR}/back2eras.png`,
   solher: `${VOUCHER_BANNER_DIR}/solher.png`,
   gycora: `${VOUCHER_BANNER_DIR}/gycora.png`,
-  kecilung: `${VOUCHER_BANNER_DIR}/kecilung.png`,
   malaijia: `${VOUCHER_BANNER_DIR}/malaijia.png`,
 };
 
-// Resolver banner sesuai slug brand & role akun (WDP: wdp.png untuk KOL, wdp-2.png untuk Visitor & Talkshow)
+// Resolver banner sesuai slug brand & role akun:
+// - WDP: wdp.png (KOL), wdp-2.png (selain KOL)
+// - Kecilung: kecilung2.png (KOL), kecilung.png (selain KOL)
 const getBrandBanner = (slug: string, role?: string): string | undefined => {
   if (slug === "wdp") {
     return role === "kol"
       ? `${VOUCHER_BANNER_DIR}/wdp.png`
       : `${VOUCHER_BANNER_DIR}/wdp-2.png`;
+  }
+  if (slug === "kecilung") {
+    return role === "kol"
+      ? `${VOUCHER_BANNER_DIR}/kecilung2.png`
+      : `${VOUCHER_BANNER_DIR}/kecilung.png`;
   }
   return BRAND_BANNERS[slug];
 };
