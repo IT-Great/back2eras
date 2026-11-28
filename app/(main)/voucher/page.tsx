@@ -1925,7 +1925,7 @@ export default function VoucherPage() {
         )}
 
         {/* INFORMASI KHUSUS KOL: HADIAH GOODIE BAG VOUCHER BACK2ERAS + DISC 10% MIN. BELANJA RP50.000 */}
-        {userRole === "kol" && (
+        {/* {userRole === "kol" && (
           <div className="bg-black border-2 border-dashed border-[#ff1493] rounded-xl p-5 mb-8 shadow-[4px_4px_0px_#0fdff8] flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-start gap-3">
               <span className="text-3xl shrink-0">🎁</span>
@@ -1945,8 +1945,8 @@ export default function VoucherPage() {
                 </p>
               </div>
             </div>
-          </div>
-        )}
+          </div> 
+        )} */}
 
         {/* INFORMASI KHUSUS KOL: BACK2ERAS & GLAMOIRE */}
         {userRole === "kol" && (
